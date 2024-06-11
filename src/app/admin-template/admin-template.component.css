@@ -1,0 +1,10 @@
+.toolBar{
+  background-color: rgb(109, 109, 181);
+
+}
+.spacer{
+  /*Me permet de mettre les éléments à droite!!"*/
+  display: flex;
+  flex:auto;
+  justify-content: right;
+}
