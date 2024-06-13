@@ -1,0 +1,86 @@
+<div class="p-3 high-barre">
+  <div
+    *ngIf="user"
+    style="width: 90%; margin-right: 10px; margin-left: 45px; margin-top: 20px"
+  >
+  <ul class="navbar-nav" style="margin-left: 40px" >
+    <li class="nav-item" >
+      <a class="nav-link">Données personnelles du pratiquant {{ user.first_name }} {{ user.last_name }}
+      </a>
+    </li>
+  </ul>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <table class="table">
+              <tr>
+                <th>Nom</th>
+                <td>{{ user.first_name }}</td>
+              </tr>
+              <tr>
+                <th>Prénom</th>
+                <td>{{ user.last_name }}</td>
+              </tr>
+              <tr>
+                <th>Genre</th>
+                <td>{{ user.gender }}</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+              </tr>
+              <tr>
+                <th>Actif</th>
+                <td>{{ user.actif }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <table class="table">
+
+              <tr>
+                <th>Rue</th>
+                <td>{{ user.rue }}</td>
+              </tr>
+              <tr>
+                <th>Commune</th>
+                <td>{{ user.commune }}</td>
+              </tr>
+              <tr>
+                <th>Ville</th>
+                <td>{{ user.ville }}</td>
+              </tr>
+              <tr>
+                <th>Date de naissance</th>
+                <td>{{ user.birthDate | date : "yyyy-MM-dd" }}</td>
+              </tr>
+              <tr>
+                <th>Statut</th>
+                <td>{{ user.status }}</td>
+              </tr>
+              <tr>
+                <th >Grade</th>
+                <td (click)="getProgramById(program)">{{ user.level?.id }}</td>
+                <td>{{ user.level?.grade }}</td>
+                <td>{{ user.level?.during }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="width: 90%; margin-right: 10px; margin-left: 45px; margin-top: 20px"
+  >
+  <span style="display:flex; margin : 10px 10 px 10px 10px">
+    <div>
+      <button class="btn btn-success"  (click)="handleUpdateUserActif()" style="display:flex;">
+        <p style="margin-right: 10px;">Activer ou desactiver le membre</p>
+        <i class="bi bi-pencil-fill"></i>
+      </button>
+    </div>
+  </span>
+</div>
+</div>

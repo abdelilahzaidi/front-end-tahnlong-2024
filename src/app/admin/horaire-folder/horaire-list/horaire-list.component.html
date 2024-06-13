@@ -1,0 +1,73 @@
+<div class="row m-5">
+  <div style="display: flex; margin-top: 80px;" class="mb-5">
+    <p class="mt-3">Créer un nouveau horaire</p>
+
+    <button class="btn btn-success m-2" (click)="createHoraire()">
+      <i class="bi bi-person-plus-fill"></i>
+    </button>
+  </div>
+  <div class="row">
+    <div
+      class="col-md-3 col-lg-3"
+      *ngFor="let horaire of horaires"
+      (click)="gethoraires()"
+    >
+      <div class="card">
+        <div class="card-header bg-primary" style="color: white">
+          <h4 class="card-title">
+            Jour du <span> {{ horaire.jour }}</span>
+          </h4>
+        </div>
+
+        <div class="card-body">
+          <div class="card-title">
+            <div class="badge bg-primary">Horaire</div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              {{ horaire.heureDebut.split(':').slice(0,2).join(':') }} - {{ horaire.heureFin.split(':').slice(0,2).join(':') }}
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div
+            style="display: flex; justify-content: center; align-items: center" class="m-1"
+          >
+            <button
+              class="btn btn-primary m-1"
+              data-bs-toggle="popover"
+              data-bs-placement="bottom"
+              data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+              data-bs-original-title="Popover Title"
+              aria-describedby="popover344544"
+              data-bs-placement="bottom"
+              style="display: flex"
+            >
+              <p style="margin-right: 5px">Modifier</p>
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+
+              <button
+                class="btn btn-primary m-1"
+                data-bs-toggle="popover"
+                data-bs-placement="bottom"
+                data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                data-bs-original-title="Popover Title"
+                aria-describedby="popover344544"
+                data-bs-placement="bottom"
+                style="display: flex"
+                (click)="handleDeletehoraire($event,horaire)"
+              >
+                <p style="margin-right: 5px">Supprimer</p>
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

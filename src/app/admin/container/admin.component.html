@@ -1,0 +1,56 @@
+<div class="p-3 high-barre">
+  <div style="flex-grow: 3" *ngIf="user$ | async as user">
+    <div class="navbar navbar-light">
+      <div
+        class="container-fluid border bg-primary"
+        style="
+          width: 90%;
+          border-radius: 5px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <ul class="navbar-nav" style="margin-left: 40px">
+          <li class="nav-item">
+            <a class="nav-link" style="color: white"
+              >Bonjour {{ user.first_name }} {{ user.last_name }}
+            </a>
+          </li>
+        </ul>
+        <ul
+        class="navbar-nav"
+        style=" display: flex; flex-direction: row"
+      >
+        <li>
+          <a class="nav-link" style="color: white" [routerLink]="['/admin', 'user-details', currentId$ |async]"> profil </a>
+        </li>
+      </ul>
+      <ul  class="navbar-nav"
+      style="display: flex; flex-direction: row">
+        
+        <li>
+          <a class="nav-link" style="color: white" [routerLink]="['/user', currentId$ |async,  'program']"> program </a>
+        </li>
+      </ul>
+        <ul
+          class="navbar-nav"
+          style="display: flex; flex-direction: row"
+        >
+          <li>
+            <a class="nav-link" style="color: white"> message </a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav"
+          style="margin-right: 10px; display: flex; flex-direction: row"
+        >
+          <li>
+            <a class="nav-link" style="color: white"> {{ user.status }} </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <app-high-barre baseUri="/admin"></app-high-barre>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,69 @@
+<div class="container mt-5 mb-5">
+  <div class="card col-md-6 offset-3">
+    <div class="card-header bg-primary">
+      <h3 style="color: white" class="text-center" >Créer une facture</h3>
+    </div>
+    <div class="card-body text-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <form [formGroup]="seanceForm" (ngSubmit)="submit()">
+      <div class="row m-5">
+        <div class="col-md-6">
+          <div>
+            <label for="first_name" class="form-label">Date d'envoie de la facture</label>
+            <input
+
+              type="date"
+              class="form-control"
+              formControlName="idDateEnvoie"
+              id="idDateEnvoie"
+              value=""
+              required
+            />
+          </div>
+          <div>
+            <label for="contenu" class="form-label">Etat de paiement</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="idEtat"
+              id="idEtat"
+              value=""
+              required
+            />
+          </div>
+          <div>
+            <label for="contenu" class="form-label">Montant</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="idMontant"
+              id="idMontant"
+              value=""
+              required
+            />
+          </div>
+
+          <div class="d-flex justify-content-center align-items-center mt-3">
+            <div style="display: flex">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-container="body"
+                data-bs-toggle="popover"
+                data-bs-placement="bottom"
+                data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                data-bs-original-title="Popover Title"
+                aria-describedby="popover344544"
+              >
+                Submit form
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+

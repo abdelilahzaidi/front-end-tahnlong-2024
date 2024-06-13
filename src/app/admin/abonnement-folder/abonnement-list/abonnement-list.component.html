@@ -1,0 +1,48 @@
+<div class="container">
+  <div
+    class="d-flex justify-content-center align-items-center"
+    class="create-user"
+  ></div>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="list-group" id="list-tab" role="tablist" aria-current="true">
+        <h2>Abonnement</h2>
+        <a
+          *ngFor="let type of types; let i = index"
+          class="list-group-item list-group-item-action"
+          role="tab"
+          [class.active]="selectedAbonnement === type"
+          (click)="onTypeAbonnementClick(type.id)"
+        >
+          {{ type.type }} - {{ type.tarif }}
+        </a>
+      </div>
+    </div>
+
+    <div class="col-8 detail-level">
+      <div class="tab-content" id="nav-tabContent">
+        <div *ngIf="selectedAbonnement">
+          <!-- Ajoutez les détails de l'abonnement ici -->
+          <h3>Détails de l'abonnement</h3>
+          <p>Type: {{ selectedAbonnement.type }}</p>
+          <p>Tarif: {{ selectedAbonnement.tarif }}</p>
+        </div>
+
+        <div *ngIf="users.length > 0">
+          <h3>Utilisateurs</h3>
+          <ul>
+            <li *ngFor="let user of users">
+              {{ user.first_name }} {{ user.last_name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="text-center my-4">
+    <!-- Ajoutez ici les boutons de pagination si nécessaire -->
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container mt-5 mb-5">
+  <div class="card col-md-6 offset-3">
+    <div class="card-header bg-primary">
+      <h3 style="color: white">Register</h3>
+    </div>
+    <div class="card-body text-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <form [formGroup]="niveauForm" (ngSubmit)="submit()">
+      <div class="row m-5">
+        <div class="col-md-6">
+          <div>
+            <label for="grade" class="form-label">Grade</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="grade"
+              id="grade"
+              value=""
+              required
+            />
+          </div>
+          <div>
+            <label class="form-label" for="program">Programme</label>
+            <select
+              class="form-select"
+              id="title"
+              formControlName="title"
+              required
+            >
+              <option selected disabled value="">Choose...</option>
+              <option *ngFor="let it of program$ | async" [value]="it.id">
+                {{ it.title }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div style="display: flex">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-container="body"
+              data-bs-toggle="popover"
+              data-bs-placement="bottom"
+              data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+              data-bs-original-title="Popover Title"
+              aria-describedby="popover344544"
+            >
+              Modifier le niveau
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

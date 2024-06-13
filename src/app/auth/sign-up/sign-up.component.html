@@ -1,0 +1,125 @@
+<div class="container mt-5 mb-5">
+
+  <div class="card col-md-6 offset-3">
+    <div class="card-header bg-primary">
+      <h3 style="color:white;">Register</h3>
+    </div>
+    <div class="d-flex align-items-center justify-content-center text-center">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+        style="width: 285px; margin-top: -30px"
+        alt="logo"
+      />
+      <div class="ml-3">
+        <h4 class="mt-1 mb-1 pb-1">Than Long </h4>
+      </div>
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+      <div class="row m-5">
+        <div class="col-md-6">
+          <div>
+            <label for="first_name" class="form-label">First name</label>
+            <input type="text" class="form-control" formControlName="first_name" id="first_name" value="" required>
+          </div>
+          <div>
+            <label for="last_name" class="form-label">Last name</label>
+            <input type="text" class="form-control" formControlName="last_name" id="last_name" value="" required>
+          </div>
+          <div>
+            <label class="form-label">Gender</label>
+            <select for="gender" class="form-select" id="gender" formControlName="gender" required>
+              <option selected disabled value="">Choose...</option>
+              <option value="male" id="gender" for="gender">Male</option>
+              <option value="female" id="gender" for="gender">Female</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+
+            <label for="email" class="form-label" for="email">Email address</label>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com"
+              for="email">
+              <div *ngIf="errorMessage" class="text-danger"> {{errorMessage}} </div>
+          </div>
+
+          <div>
+            <label for="rue" class="form-label">Rue</label>
+            <input type="text" class="form-control" id="adress" required formControlName="rue">
+          </div>
+          <div>
+            <label for="commune" class="form-label">Commnue</label>
+            <input type="text" class="form-control" id="commune" required formControlName="commune">
+          </div>
+          <div>
+            <label for="ville" class="form-label">Ville</label>
+            <input type="text" class="form-control" id="ville" required formControlName="ville">
+          </div>
+
+        </div>
+        <div class="col-md-6">
+
+          <div>
+            <label for="birthDate" class="form-label">Birth Date</label>
+            <input type="date" class="form-control" id="birthDate" required for="birthDate" formControlName="birthDate">
+          </div>
+
+          <div>
+            <label for="gsm" class="form-label">GSM</label>
+            <input type="text" class="form-control" id="gsm" required formControlName="gsm">
+          </div>
+
+
+          <!-- <div>
+            <label class="form-label">Status</label>
+            <select for="status" class="form-select" id="status" formControlName="status" required>
+              <option selected disabled value="">Choose...</option>
+              <option value="admin" id="status" for="status">Admin</option>
+              <option value="member" id="status" for="status">Member</option>
+            </select>
+          </div> -->
+
+
+          <div>
+            <label class="form-label" for="grade">Grade</label>
+            <select class="form-select" id="grade" for="grade" formControlName="grade" required>
+              <option selected disabled value="">Choose...</option>
+              <option *ngFor="let it of grades$ |async" [value]="it.id">{{ it.grade }}</option>
+            </select>
+          </div>
+
+
+
+          <div class="col-12 mt-">
+            <label class="form-check-label mt-5" for="actif">
+              Actif
+            </label>
+            <div class="form-check m-1">
+              <input class="form-check-input mt-2" type="checkbox" value="" id="iactif" formControlName="actif"
+                required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+          </div>
+
+          <div class="">
+            <label for="password_confirm" class="form-label mb-0">Password Confirm</label>
+            <input type="password" class="form-control" id="password_confirm" formControlName="password_confirm">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div style="display: flex">
+            <button type="submit" class="btn btn-primary" data-bs-container="body" data-bs-toggle="popover"
+              data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+              data-bs-original-title="Popover Title" aria-describedby="popover344544">
+              Submit form
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

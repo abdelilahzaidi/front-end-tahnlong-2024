@@ -1,0 +1,48 @@
+<div class="container">
+  <div
+    class="d-flex justify-content-center align-items-center"
+    class="create-user"
+  ></div>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="list-group" id="list-tab" role="tablist" aria-current="true" >
+        <h2>Niveau</h2>
+        <a
+          *ngFor="let level of levels; let i = index"
+          (click)="getlevelById($event, level)"
+          class="list-group-item list-group-item-action"
+          role="tab"
+
+          [class.active]="selectedLevel === level"
+        >
+          {{ level.grade }}
+        </a>
+      </div>
+    </div>
+
+    <div class="col-8 detail-level">
+      <div class="tab-content" id="nav-tabContent">
+        <div *ngIf="selectedLevel">
+          <h3>{{ selectedLevel.grade }}</h3>
+          <p>{{ selectedLevel.during }}</p>
+          <div *ngIf="selectedLevel.users && selectedLevel.users.length > 0">
+            <h4>Pratiquants :</h4>
+            <ul>
+              <li *ngFor="let user of selectedLevel.users">
+                {{ user.first_name }} {{ user.last_name }}
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="!selectedLevel.users || selectedLevel.users.length === 0">
+            <p>Aucun pratiquant associé à ce niveau.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center my-4">
+    <!-- Ajoutez ici les boutons de pagination si nécessaire -->
+  </div>
+</div>

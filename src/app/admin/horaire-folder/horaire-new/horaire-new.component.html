@@ -1,0 +1,75 @@
+<div class="container mt-5 mb-5">
+  <div class="card col-md-6 offset-3">
+    <div class="card-header bg-primary">
+      <h3 style="color: white" class="text-center" >Horaire</h3>
+    </div>
+    <div class="card-body text-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <form [formGroup]="horaireForm" (ngSubmit)="submit()">
+      <div class="row m-5">
+        <div class="col-md-6">
+          <div>
+            <label for="first_name" class="form-label">Heure début</label>
+            <input
+              type="time"
+              class="form-control"
+              formControlName="heureDebut"
+              id="heureDebut"
+              value=""
+              required
+            />
+          </div>
+          <div>
+            <label for="first_name" class="form-label">Heure fin</label>
+            <input
+              type="time"
+              class="form-control"
+              formControlName="heureFin"
+              id="heureFin"
+              value=""
+              required
+            />
+          </div>
+
+          <div>
+            <label class="form-label">Jour</label>
+            <select
+              for="gender"
+              class="form-select"
+              id="gender"
+              formControlName="jour"
+              required
+            >
+              <option selected disabled value="">Sectionner...</option>
+              <option value="lundi" id="lundi" for="lundi">Lundi</option>
+              <option value="mardi" id="mardi" for="mardi">Mardi</option>
+              <option value="mercredi" id="mercredi" for="mercredi">Mercredi</option>
+              <option value="jeudi" id="jeudi" for="jeudi">Jeudi</option>
+              <option value="vendredi" id="vendredi" for="vendredi">Vendredi</option>
+              <option value="samedi" id="samedi" for="samedi">Samedidi</option>
+              <option value="dimanche" id="dimanche" for="dimanche">Dimanche</option>
+
+            </select>
+          </div>
+          <div class="d-flex justify-content-center align-items-center mt-3">
+            <div style="display: flex">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-container="body"
+                data-bs-toggle="popover"
+                data-bs-placement="bottom"
+                data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                data-bs-original-title="Popover Title"
+                aria-describedby="popover344544"
+              >
+                Valider l'horaire
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

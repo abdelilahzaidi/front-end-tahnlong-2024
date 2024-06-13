@@ -1,0 +1,111 @@
+<div style="flex-grow: 3" *ngIf="user$ | async as user">
+  <div class="container">
+    <!-- Centrer la barre de navigation -->
+    <div class="row">
+      <div class="col-md-">
+        <div class="navbar navbar-dark">
+          <div
+            class="container-fluid border bg-primary text-center"
+            style="
+              border-radius: 5px;
+              margin-top: 20px;
+              margin-bottom: 20px;
+              font-weight: bolder;
+            "
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link">Bonjour {{ user.first_name }} {{ user.last_name }} </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="p-3 high-barre">
+          <ul class="nav nav-pills">
+            <li *ngFor="let action of actions">
+              <button [routerLink]="[action.route]"
+                      [ngClass]="action === currentAction ? 'btn btn-primary ms-1' : 'btn btn-outline-primary ms-1 mx-1'"
+                      (click)="handleActionClick(action)">
+                {{action.title}}
+                <i class="bi bi-{{action.icon}}"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div *ngIf="user$ | async as user">
+  <div class="container">
+    <!-- Centrer la barre de navigation -->
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="navbar navbar-dark">
+          <div
+            class="container-fluid border bg-primary text-center"
+            style="
+              border-radius: 5px;
+              margin-top: 20px;
+              margin-bottom: 20px;
+              font-weight: bolder;
+            "
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link">Bonjour {{ user.first_name }} {{ user.last_name }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Afficher les informations de l'utilisateur -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Informations du membre</h1>
+        <p>Membre depuis: {{ user.attributionDate| date:'dd/MM/yyyy'}}</p>
+        <p>Nom: {{ user.first_name }} {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Status: {{ user.status }}</p>
+        
+        <!-- Ajouter plus d'informations si nécessaire -->
+      </div>
+    </div>
+
+    <!-- Afficher le programme de l'utilisateur -->
+    <div class="row" *ngIf="program">
+      <div class="col-md-12">
+        <h3>Programme</h3>
+        <p>Titre: {{ user.level.program.title }}</p>
+        <ul>
+          <li *ngFor="let technical of user.level.program.technicals">
+            <p>Nom: {{ technical.nom }}</p>
+            <p>Description: {{ technical.description }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

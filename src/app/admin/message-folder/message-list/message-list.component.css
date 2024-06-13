@@ -1,0 +1,102 @@
+
+.message{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
+.card{
+  height: 600px;
+  border-radius: 15px;
+  border: 2px solid;
+  color: rgb(143, 161, 200);
+}
+
+.user-list{
+  height:600px;
+
+}
+
+.message-list{
+  height:600px;
+}
+
+button{
+  margin :5px 5px;
+  border-radius: 5px;
+  width:90px;
+}
+
+.card-header-1{
+
+  height: 150px;
+  border-right: 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.card-body-1{
+  border-right: 1px solid;
+  height: 450px;
+
+}
+
+.card-body-2{
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.card-header-2{
+  height: 150px;
+}
+
+.card-header-2{
+  display: flex;
+  padding :50px 50px;
+  display: flex;
+  align-items: center;
+
+}
+
+
+.avatar{
+  width:100px;
+  height:100px;
+  background-color: aquamarine;
+  border-radius: 50%;
+  align-items: center;
+
+
+}
+
+.user-details{
+  width:80%;
+  height:100px;
+  margin-left: 30px;
+
+}
+.details{
+  height:70%;
+  background-color: blanchedalmond;
+}
+
+
+.card-input {
+  border-top: 1px solid;
+  height: 120px;
+  align-items: end;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
