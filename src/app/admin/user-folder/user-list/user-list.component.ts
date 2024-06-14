@@ -4,14 +4,12 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 
-
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-
   errorMessage: any;
   constructor(
     private httpClient: HttpClient,
@@ -27,11 +25,9 @@ export class UserListComponent implements OnInit {
 
   currentAction!: string;
   ngOnInit(): void {
-    this.httpClient
-      .get<any[]>(this.apiUrl + '/auth/user')
-      .subscribe((data) => {
-        this.user = data;
-      });
+    this.httpClient.get<any[]>(this.apiUrl + '/auth/user').subscribe((data) => {
+      this.user = data;
+    });
     this.getUser();
   }
 
@@ -52,31 +48,29 @@ export class UserListComponent implements OnInit {
     this.userService.getUserById(u.id).subscribe({
       next: (data) => {
         this.user = data;
-        console.log("user ",u.id," données : ",this.user)
+        console.log('user ', u.id, ' données : ', this.user);
         this.router.navigate(['/admin/user-details', u.id]);
       },
       error: (err) => {
         this.errorMessage = err.error;
       },
     });
-    console.log('Hello user',u);
+    console.log('Hello user', u);
   }
 
-
-
-
+  //dit User
   handleEditUser($event: Event, u: any) {
     $event.preventDefault();
     $event.stopPropagation();
-    console.log('up',u.id);
+    console.log('up', u.id);
     this.router.navigate(['/admin/user-edit', u.id]);
   }
 
-
+  //Create a user
   createUser() {
     this.router.navigate(['/admin/user-new']);
   }
-  handleDeleteUser($event: Event,u: any) {
+  handleDeleteUser($event: Event, u: any) {
     $event.preventDefault();
     $event.stopPropagation();
     let conf = confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');
@@ -93,4 +87,3 @@ export class UserListComponent implements OnInit {
     });
   }
 }
-

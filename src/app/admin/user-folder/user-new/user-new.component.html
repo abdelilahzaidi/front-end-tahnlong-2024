@@ -123,17 +123,31 @@
             >
               <option selected disabled value="">Choose...</option>
               <option value="admin" id="status" for="status">Admin</option>
+              <option value="responsable" id="status" for="status">
+                Responsable
+              </option>
               <option value="member" id="status" for="status">Member</option>
             </select>
           </div>
           <div>
             <label for="level" class="form-label">Niveau</label>
-    <select class="form-select" id="level" formControlName="level" required>
-      <option value="">Sélectionnez un niveau</option>
-      <option *ngFor="let level of levels$ | async" [value]="level.id">{{ level.grade }}</option>
-    </select>
-    <div *ngIf="userForm.get('level')?.errors?.['required']" class="text-danger">Le niveau est requis.</div>
-
+            <select
+              class="form-select"
+              id="level"
+              formControlName="level"
+              required
+            >
+              <option value="">Sélectionnez un niveau</option>
+              <option *ngFor="let level of levels$ | async" [value]="level.id">
+                {{ level.grade }}
+              </option>
+            </select>
+            <div
+              *ngIf="userForm.get('level')?.errors?.['required']"
+              class="text-danger"
+            >
+              Le niveau est requis.
+            </div>
           </div>
           <div class="col-12 mt-3">
             <label class="form-check-label mt-1" for="actif"> Actif </label>

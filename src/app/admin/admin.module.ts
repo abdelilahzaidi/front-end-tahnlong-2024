@@ -17,6 +17,8 @@ import { ProgramListComponent } from './program-folder/program-list/program-list
 import { HighBarreComponent } from "../shared/high-barre/high-barre.component";
 import { UserProgramComponent } from './user-folder/user-program/user-program.component';
 import { FactureNewComponent } from './facture-folder/facture-new/facture-new.component';
+import { EventListComponent } from './event-folder/event-list/event-list.component';
+import { EventNewComponent } from './event-folder/event-new/event-new.component';
 
 
 
@@ -33,7 +35,9 @@ import { FactureNewComponent } from './facture-folder/facture-new/facture-new.co
         UserDetailsComponent,
         ProgramListComponent,
         UserProgramComponent,
-        FactureNewComponent
+        FactureNewComponent,
+        EventListComponent,
+        EventNewComponent
     ],
     imports: [
         CommonModule,

@@ -1,3 +1,4 @@
+import { EventListComponent } from './event-folder/event-list/event-list.component';
 import { UserEditComponent } from './user-folder/user-edit/user-edit.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -36,6 +37,7 @@ import { AbonnementListComponent } from './abonnement-folder/abonnement-list/abo
 import { AbonnementEditComponent } from './abonnement-folder/abonnement-edit/abonnement-edit.component';
 import { UserProgramComponent } from './user-folder/user-program/user-program.component';
 import { FactureNewComponent } from './facture-folder/facture-new/facture-new.component';
+import { EventNewComponent } from './event-folder/event-new/event-new.component';
 
 
 const routes: Routes = [
@@ -71,7 +73,9 @@ const routes: Routes = [
     {path:'seance-new',component:SeanceNewComponent},
     {path:'abonnement-list',component:AbonnementListComponent},
     {path:'abonnement-details',component:AbonnementDetailsComponent},
-    {path:'abonnemnt-edit',component:AbonnementEditComponent}
+    {path:'abonnemnt-edit',component:AbonnementEditComponent},
+    {path:'event-list',component:EventListComponent},
+    {path:'event-new',component:EventNewComponent}
   ]}
 ];
 
