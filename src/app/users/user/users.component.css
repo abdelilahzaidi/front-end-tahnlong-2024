@@ -1,0 +1,29 @@
+.high-barre {
+  background-color: #f8f9fa; /* Couleur de fond */
+  border-radius: 5px;
+  margin-bottom: 20px; /* Ajouter un espace en dessous de la barre d'actions */
+  display: flex;
+  justify-content: center;
+}
+
+
+.navbar-li-dropdown{
+  display: flex;
+  color:white;
+  list-style-type: none;
+}
+
+.link-item .dropdown{
+  display: flex;
+  align-items: center;
+
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px;
+}
+
+.link-item .dropdown , a{
+
+  padding: 10px;
+
+}

@@ -1,0 +1,77 @@
+
+
+<div class="presence">
+  <div class="presence-seance-list">
+    <div class="row m-5">
+      <div style="display: flex;">
+        <p class="mt-3">Liste des séances</p>
+      </div>
+      <table class="table table-striped table-bordered mt-4">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th>Thème de la séance</th>
+            <th>Horaire</th>
+            <th>Jour</th>
+            <th>Date</th>
+            <th>Lieu</th>
+            <th>Presences</th>
+            <th>Membres</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let seance of seances">
+            <td>{{ seance.cour?.objectifDuCour }}</td>
+            <td>
+              {{ seance.horaire?.heureDebut ? (seance.horaire.heureDebut.split(':').slice(0, 2).join(':')) : '-' }} -
+              {{ seance.horaire?.heureFin ? (seance.horaire.heureFin.split(':').slice(0, 2).join(':')) : '-' }}
+            </td>
+            <td>{{ seance.horaire?.jour || '-' }}</td>
+            <td>{{ seance.dateCour?.dateCour | date:'dd/MM/yyyy' }}</td>
+            <td>
+              {{ seance.cour?.lieu?.rue || '-' }},
+              {{ seance.cour?.lieu?.commune || '-' }},
+              {{ seance.cour?.lieu?.ville || '-' }}
+            </td>
+            <td>
+              <button class="btn btn-primary m-1" (click)="validate($event, seance)">
+                <i class="bi bi-pencil-fill"></i> Valider
+              </button>
+            </td>
+            <td (click)="toggleDiv(seance)">
+              <p class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;">
+                Membres
+                <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- La div qui sera affichée/masquée -->
+  <div class="presence-users-list" *ngIf="showDiv">
+    <div class="user-list">
+      <h2>Liste des utilisateurs pour la séance {{ seanceId }}</h2>
+      <p>Date de la séance : {{ selectedSeance?.dateCour?.dateCour | date:'dd/MM/yyyy' }}</p>
+      <table>
+        <thead>
+          <tr>
+
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Présence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">           <!-- Correction: utiliser user.user.id -->
+            <td>{{ user.user.last_name }}</td> <!-- Correction: utiliser user.user.lastName -->
+            <td>{{ user.user.first_name }}</td> <!-- Correction: utiliser user.user.firstName -->
+            <td>{{ user.presence ? 'Présent' : 'Absent' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+

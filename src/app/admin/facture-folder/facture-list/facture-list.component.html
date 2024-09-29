@@ -1,9 +1,5 @@
-<div class="container">
-  <div
-    class="d-flex justify-content-center align-items-center"
-    class="create-user"
-    style=""
-  >
+<!-- <div class="container">
+  <div class="d-flex justify-content-center align-items-center create-user">
     <div style="display: flex; margin-top: 80px">
       <p class="mt-3">Créer une nouvelle facture</p>
       <button class="btn btn-success m-2" (click)="createFacture()">
@@ -18,42 +14,105 @@
     <thead>
       <tr>
         <th>Date envoie</th>
-        <th>Etat de paiement</th>
+        <th>Utilisateurs</th>
         <th>Montant</th>
-        <th>Modifier ou supprimer les données</th>
         <th>Attribuer la facture</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let invoice of invoices">
         <td>{{ invoice.dateEnvoie | date : "yyyy-MM-dd" }}</td>
-        <td>{{ invoice.etatDePaiement }}</td>
-        <td>{{ invoice.montant }}</td>
-        <td class="">
-          <button class="btn btn-success ms-5">
-            <i class="bi bi-pencil-fill"></i>
-          </button>
-          <button class="btn btn-danger mx-5">
-            <i class="bi bi-trash"></i>
-          </button>
-        </td>
-        <div style="display: flex; justify-content: center;">
-          <select
-            class="form-select"
-            id="user"
-            formControlName="user"
-            required
-            style="width:50% ; margin:0 10px 010px;"
-            
+        <td>
+          <a
+            class="nav-link"
+            style="color: white"
+            [routerLink]="['/admin', 'facture-user-list']"
           >
-            <option value="Sélectionnez un utilisateur">Sélectionnez un utilisateur</option>
-            <option *ngFor="let user of users" [value]="user.id">
-              {{ user.first_name }} {{ user.last_name }}
-            </option>
-          </select>
-         <button>assigner</button>
-        </div>
+            Membres
+          </a>
+        </td>
+        <td>{{ invoice.montant }}</td>
+        <td>
+          <form
+            [formGroup]="userForm"
+            style="display: flex; justify-content: center"
+          >
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="assignUser(invoice)"
+            >
+              assigner
+            </button>
+          </form>
+        </td>
+        <td>
+          <button
+          class="btn btn-success ms-5 center"
+
+          (click)="handleEditFacture()"
+        >
+          <i class="bi bi-pencil-fill"></i>
+        </button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+
+
+
+ -->
+
+
+
+
+
+ <div class="container">
+  <button class="btn btn-primary" (click)="createMonthlyInvoices()">Créer Factures Mensuelles</button>
+  <h2>Liste des Factures</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Utilisateur</th>
+        <th>Date d'envoi</th>
+        <th>Montant</th>
+        <th>Type d'abonnement</th>
+        <th>État de paiement</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of invoices; let i = index">
+        <td>{{invoice.id }}</td>
+        <td>{{ invoice.abonnement.user.first_name }} {{ invoice.abonnement.user.last_name }}</td>
+        <td>{{ invoice.dateEnvoie | date: 'shortDate' }}</td>
+        <td>{{ invoice.montant | currency }}</td>
+        <td>{{ invoice.abonnement.typeAbonnement.type }}</td>
+        <td>{{ invoice.etatDePaiement ? 'Payée' : 'Non Payée' }}</td>
+        <td>
+          <button
+            class="btn btn-success ms-5"
+            (click)="confirmUpdatePayment(invoice.id, !invoice.etatDePaiement)"
+            style="display: flex; align-items: center;justify-content: center;"
+          >
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="notificationMessage" class="alert alert-success" role="alert">
+    {{ notificationMessage }}
+  </div>
+</div>
+
+
+
+
+

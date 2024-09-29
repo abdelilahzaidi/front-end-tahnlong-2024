@@ -5,7 +5,7 @@ import { AuthService } from "../auth/services/auth.service";
 import { SessionService } from "../services/session.service";
 
 
-// @Injectable()
+
 // export class AuthGuardAdmin implements CanActivate {
 //     constructor(private authService: AuthService,
 //         private router: Router
@@ -34,22 +34,22 @@ import { SessionService } from "../services/session.service";
 //     canActivate() {
 //       return this.isLoggedIn()
 //     }
-// }
 
 export function authAdminGuard(): CanActivateChildFn {
     return () => {
         const $router = inject(Router)
         const $session = inject(SessionService)
-        
+
         return $session.User$.pipe(
             map(user => {
                 console.log("ADMIN_GUARD", user)
                 if (!user) {
                     return $router.createUrlTree(["/auth/login"]);
                 }
-                
-                return user.status === 'admin'   
+
+                return user.status === 'admin'
             })
         )
     }
 }
+

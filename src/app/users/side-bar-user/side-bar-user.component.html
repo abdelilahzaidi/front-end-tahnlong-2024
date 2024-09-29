@@ -1,0 +1,22 @@
+<div class="btn-group-vertical" [class.collapsed]="isCollapsed" style="display:flex; width:300px;">
+  <!-- Icône pour masquer/afficher la barre latérale -->
+  <button class="toggle-btn btn-primary mx-2" (click)="toggleSideBar()">
+    <i class="icon" [ngClass]="isCollapsed ? 'bi bi-arrow-right-square-fill' : 'bi bi-arrow-left-square-fill'" aria-hidden="true"></i>
+  </button>
+
+
+  <ul class="nav nav-pills m-1 btn-group-vertical mb-1" *ngIf="!isCollapsed" >
+
+    <li *ngFor="let action of actions">
+      <button [routerLink]="[action.route]"
+      [ngClass]="action === currentAction?'btn btn-primary ms-1':'btn btn-outline-primary ms-1 mx-1'"
+      style="width: 200px;"
+      class="m-1"
+     >
+        {{action.title}}
+        <i class="bi bi-{{action.icon}}"></i>
+      </button>
+    </li>
+  </ul>
+</div>
+

@@ -1,9 +1,9 @@
 
 
-<div class="container" >
+<div *ngIf="isCollapsed" class="container collapsed">
   <div class="d-flex justify-content-center align-items-center" class="create-program">
 
-    <div style="display: flex; margin-top: 80px;">
+    <div style="margin-top: 380px;">
       <p class="mt-3" >Créer un nouveau programme</p>
 
       <button class="btn btn-success m-2 " (click)="createProgram()">
@@ -32,7 +32,7 @@
   </table>
 
   <div class="text-center my-4">
-    <!-- Ajoutez ici les boutons de pagination si nécessaire -->
+
   </div>
 </div>
 

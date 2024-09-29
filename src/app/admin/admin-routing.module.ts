@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserNewComponent } from './user-folder/user-new/user-new.component';
 import { UserComponent } from './user-folder/user/user.component';
 import { AuthGuard } from '../guards/auth.guard';
-import { UsersComponent } from '../users/users.component';
+import { UsersComponent } from '../users/user/users.component';
 import { authAdminGuard } from '../guards/auth-admin.guard';
 import { userResolver } from './user-folder/user-edit/user.resolver';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -37,7 +37,16 @@ import { AbonnementListComponent } from './abonnement-folder/abonnement-list/abo
 import { AbonnementEditComponent } from './abonnement-folder/abonnement-edit/abonnement-edit.component';
 import { UserProgramComponent } from './user-folder/user-program/user-program.component';
 import { FactureNewComponent } from './facture-folder/facture-new/facture-new.component';
-import { EventNewComponent } from './event-folder/event-new/event-new.component';
+
+import { FactureAssignComponent } from './facture-folder/facture-assign/facture-assign.component';
+import { FactureUserListComponent } from './facture-folder/facture-user-list/facture-user-list.component';
+import { MessageCreateComponent } from './message-folder/message-create/message-create.component';
+import { EventCreateComponent } from './event-folder/event-new/event-new.component';
+import { HoraireUpdateComponent } from './horaire-folder/horaire-update/horaire-update.component';
+import { FactureListUpdateComponent } from './facture-folder/facture-list-update/facture-list-update.component';
+import { SeanceDetailComponent } from './seance-folder/seance-detail/seance-detail.component';
+import { EventsDetailsComponent } from './event-folder/events-details/events-details.component';
+import { FactureDetailComponent } from './facture-folder/facture-detail/facture-detail.component';
 
 
 const routes: Routes = [
@@ -56,8 +65,10 @@ const routes: Routes = [
     {path:'horaire-list',component:HoraireListComponent},
     {path:'lieu-list',component:LieuListComponent},
     {path:'seance-list',component:SeanceListComponent},
+    {path:'message-list/:id',component:MessageListComponent},
     {path:'message-list',component:MessageListComponent},
     {path:'facture-list',component:FactureListComponent},
+    {path:'facture-list-update',component:FactureListUpdateComponent},
     {path:'facture-new',component:FactureNewComponent},
     {path:'cour-list',component:CourListComponent},
     {path:'date-cour-list',component:DateCourListComponent},
@@ -67,6 +78,7 @@ const routes: Routes = [
     {path:'niveau-new',component:NiveauNewComponent},
     {path:'niveau-edit',component:NiveauEditComponent},
     {path:'horaire-new',component:HoraireNewComponent},
+    {path:'horaire-edit/:id',component:HoraireUpdateComponent},
     {path:'lieu-new',component:LieuNewComponent},
     {path:'lieu-edit/:id',component:LieuEditComponent},
     {path:'cour-new',component:CourNewComponent},
@@ -75,7 +87,24 @@ const routes: Routes = [
     {path:'abonnement-details',component:AbonnementDetailsComponent},
     {path:'abonnemnt-edit',component:AbonnementEditComponent},
     {path:'event-list',component:EventListComponent},
-    {path:'event-new',component:EventNewComponent}
+    {path:'event-new',component:EventCreateComponent},
+    {path:'facture-assign',component:FactureAssignComponent},
+    {path:'facture-assign/:id',component:FactureAssignComponent},
+    {path:'facture-user-list',component:FactureUserListComponent},
+    {path:'message-create',component:MessageCreateComponent},
+    {path:'seance-detail/:id',component:SeanceDetailComponent},
+    {path:'facture-details/:id',component:FactureDetailComponent},
+    {path:'abonnement-details/:id',component:AbonnementDetailsComponent},
+    {path:'events/:id',component:EventsDetailsComponent},
+
+
+
+
+
+
+
+
+
   ]}
 ];
 

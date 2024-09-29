@@ -1,126 +1,75 @@
-<!--
-<div class="message">
-  <div class="card mb-3" style="width: 63%;">
-    <div class="row g-0" >
-      <div class="col-md-4 user-list">
-        <div class="card-header-1">
-          <div class="search">
-            <input class="p-2" type="text" />
-            <button class="btn btn-outline-success">
-              <i class="bi bi-search"></i>
-            </button>
-          </div>
-          <div class="d-grid d-md-block button-list">
-            <button class="btn btn-primary" type="button">Tout</button>
-            <button class="btn btn-primary" type="button">Lues</button>
-            <button class="btn btn-primary" type="button">non lues</button>
-          </div>
-        </div>
-        <div class="card-body-1">
-          <ul class="list-group">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-8 message-list">
-        <div class="card-header-2">
-          <div class="avatar">
-          </div>
-          <div class="user-details">
-            <h3>User</h3>
-            <div class="details">
-            </div>
-          </div>
-        </div>
-        <div class="card-body-2">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-          <p class="card-text">
-            <small class="text-body-secondary">Last updated 3 mins ago</small>
-          </p>
-          <div class="card-input">
-            <div class="form-floating" style="margin: 0 25px 0 0;">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 60%;width: 400px; border-radius: 5px;"></textarea>
-              <label for="floatingTextarea2">Rédiger un message</label>
-            </div>
-            <button type="button" class="btn btn-secondary" style="width:80px;height: 80px; border-radius: 50%; " disabled>Envoyer</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->
 
-<!-- message-list.component.html -->
-<div class="message">
-  <div class="card mb-3" style="width: 63%;">
+ <div class="container message mt-4" style="width:80%; ">
+  <div class="card mb-3" style="width:100%;">
     <div class="row g-0">
       <div class="col-md-4 user-list">
-        <div class="card-header-1">
-          <div class="search">
-            <input class="p-2" type="text" />
-            <button class="btn btn-outline-success">
-              <i class="bi bi-search"></i>
+        <div class="card-header-1 p-3" style="width : 100%;">
+          <div class="row g-0 mb-3">
+            <div class="col-md-12">
+              <div class="search d-flex">
+                <input class="form-control me-2" type="text" placeholder="Rechercher" />
+                <button class="btn btn-outline-success">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="create d-flex align-items-center mb-3">
+            <p class="mb-0">Créer un nouveau user</p>
+            <button class="btn btn-outline-success ms-2" (click)="createMessage()">
+              <i class="bi bi-person-plus-fill"></i>
             </button>
           </div>
-          <div class="d-grid d-md-block button-list">
-            <button class="btn btn-primary" type="button">Tout</button>
-            <button class="btn btn-primary" type="button">Lues</button>
-            <button class="btn btn-primary" type="button">Non lues</button>
-          </div>
         </div>
-        <div class="card-body-1">
-          <ul class="list-group">
-            <li *ngFor="let message of messages" class="list-group-item">
+        <div class="card-body-1 p-3">
+          <ul class="list-group" >
+            <li *ngFor="let message of messages" class="list-group-item" (click)="selectMessage(message)" [class.active]="selectedMessage?.id === message.id">
               <div>
-                <div [class.active]="selectedMessage?.id === message.id" (click)="selectedUserClick(message.id)">
-                  <strong>Nom:</strong> {{ message.sender.last_name }} {{ message.sender.first_name }}
-                </div>
+                <strong>Nom:</strong> {{ message.receivers[0]?.firstName }}
               </div>
-              <div><strong>Contenu:</strong> {{ message.contenu }}</div>
+              <div><strong>Contenu:</strong> {{ message.content }}</div>
             </li>
           </ul>
         </div>
-
-
       </div>
       <div class="col-md-8 message-list">
-        <div class="card-header-2">
-          <div class="avatar">
-          </div>
+        <div class="card-header-2 p-3">
+          <div class="avatar mb-2"></div>
           <div class="user-details">
             <div class="details">
               <div *ngIf="selectedMessage">
-                <h3>{{ selectedMessage.sender.last_name }} {{ selectedMessage.receivers.first_name }}</h3>
-
-                <p><strong>Contenu:</strong> {{ selectedMessage.contenu }}</p>
-                <p><strong>Date d'envoi:</strong> {{ selectedMessage.dateHeureEnvoie }}</p>
+                <h3>{{ selectedMessage.sender?.lastName }} {{ selectedMessage.receivers[0]?.firstName }}</h3>
+                <p><strong>Contenu:</strong> {{ selectedMessage.content }}</p>
+                <p>
+                  <strong>Date d'envoi:</strong>
+                  {{ selectedMessage.dateHeureEnvoie | date:'fullDate' }} à {{ selectedMessage.dateHeureEnvoie | date:'shortTime' }}
+                </p>
               </div>
-              <div *ngIf="!selectedUser && !selectedMessage">
-                <p>Aucun utilisateur sélectionné ou message sélectionné.</p>
+              <div *ngIf="!selectedMessage">
+                <p>Aucun message sélectionné.</p>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="card-body-2">
-          <div class="card-input">
-            <div class="form-floating" style="margin: 0 25px 0 0;">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 60%;width: 400px; border-radius: 5px;"></textarea>
-              <label for="floatingTextarea2">Rédiger un message</label>
-            </div>
-            <button type="button" class="btn btn-secondary" style="width:80px;height: 80px; border-radius: 50%;" disabled>Envoyer</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<app-message-create [isOpen]="isModalOpen" (close)="closeModal()"></app-message-create>
 
+
+<style>
+  .avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 50%;
+  }
+  @media (max-width: 768px) {
+    .user-list, .message-list {
+      padding: 10px;
+    }
+
+  }
+</style>

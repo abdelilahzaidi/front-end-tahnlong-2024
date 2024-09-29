@@ -11,63 +11,53 @@ import { SeanceService } from 'src/app/services/seance/seance.service';
 })
 export class SeanceListComponent {
   errorMessage: any;
+  seances: any[] = [];
+  paginatedSeances: any[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalPages: number = 1;
+  pages: number[] = [];
+
   constructor(
     private httpClient: HttpClient,
-    private fb: FormBuilder,
-    private seanceService: SeanceService,
     private router: Router
   ) {}
-  apiUrl = 'http://localhost:3001';
-  user: any;
-  seance: any;
-  seances: any[] = [];
 
-  response$: any;
-
-  currentAction!: string;
   ngOnInit(): void {
-    this.httpClient
-      .get<any[]>(this.apiUrl + '/seance')
-      .subscribe((data: any) => {
-        this.seance = data;
-      });
     this.getSeances();
+
+  }
+
+  getSeances() {
+    this.httpClient.get<any[]>('http://localhost:3001/seance').subscribe({
+      next: (data) => {
+        this.seances = data;
+        console.log("Seances : ",this.seances)
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
 
 
-  getSeances() {
-    console.log('seances');
-    this.httpClient
-      .get<any[]>('http://localhost:3001/seance')
-      .subscribe({
-        next: (data) => {
-          this.seances = data as [];
-          console.log('Seance', this.seances);
-        },
-        error: (err: any) => {
-          console.log(err);
-        },
-      });
-    }
+  createSeance() {
+    this.router.navigate(['/admin/seance-new']);
+  }
 
-    createSeance(){
-      this.router.navigate(['/admin/seance-new']);
-    }
-
-  // getseanceById(p: any) {
-  //   console.log("Un prog")
-  //   this.niveauService.getseanceById(p.id).subscribe({
-  //     next: (data) => {
-  //       this.seance = data
-  //       console.log("seance", data)
-  //       console.log("seance id", this.seance.id, " ", p.id)
-
-  //      },
-  //     error: (err) => {
-  //       this.errorMessage = err.error;
-  //     },
-  //   })
+  // editSeanceById(seanceId: number) {
+  //   this.router.navigate(['/admin/seance-edit', seanceId]);
   // }
 
+  // deleteSeanceById(seanceId: number) {
+  //   this.httpClient.delete(`http://localhost:3001/seance/${seanceId}`).subscribe({
+  //     next: () => {
+  //       this.getSeances();
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   });
+  // }
 }

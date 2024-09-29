@@ -61,10 +61,10 @@ export class AbonnementService {
   async getUsersByTypeAbonnement(typeId: number): Promise<{ typeAbonnement: any; users: any[]; }> {
     try {
       const response = await this.http.get<{ typeAbonnement: any; users: any[]; }>(`${this.apiUrl}/type-abonnement/${typeId}/abonnement`).toPromise();
-      return response || { typeAbonnement: null, users: [] }; // Assurez-vous qu'une valeur est toujours retournée
+      return response || { typeAbonnement: null, users: [] }; 
     } catch (error) {
       console.error('Erreur lors de la récupération des utilisateurs par type d\'abonnement:', error);
-      throw error; // Lancer l'erreur pour que le composant puisse la gérer
+      throw error;
     }
   }
 }

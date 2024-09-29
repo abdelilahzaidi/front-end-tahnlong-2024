@@ -14,7 +14,8 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   userLogIn (user: any) {
-    return this.http.post<{user: any}>(this.apiUrl + '/auth/login', user).pipe(tap(({user}) => this.currentUser = { ...user }))
+    return this.http.post<{user: any}>(this.apiUrl + '/auth/login', user)
+    .pipe(tap(({user}) => this.currentUser = { ...user }))
   }
 
   signupUser(user: any) {
@@ -31,9 +32,9 @@ export class AuthService {
   getLoggedInUserId(): number | undefined {
     const userId = localStorage.getItem('loggedInUserId');
     if (userId) {
-      return parseInt(userId, 10); // Parsez l'ID en tant que nombre
+      return parseInt(userId, 10);
     } else {
-      return undefined; // Renvoie undefined si aucun utilisateur n'est connecté
+      return undefined; 
     }
   }
 }

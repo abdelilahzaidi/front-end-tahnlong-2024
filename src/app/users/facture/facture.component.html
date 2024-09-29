@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h2>Détails des factures</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date d'envoi</th>
+        <th>État de paiement</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of invoices">
+        <td>{{ invoice.id }}</td>
+        <td>{{ invoice.dateEnvoie | date }}</td>
+        <td>{{ invoice.etatDePaiement ? 'Payé' : 'Non payé' }}</td>
+        <td>{{ invoice.montant }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

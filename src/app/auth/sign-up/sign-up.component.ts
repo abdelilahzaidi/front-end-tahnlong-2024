@@ -13,7 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class SignUpComponent {
   errorMessage: any =null;
   response$ :any;
-  constructor(private fb : FormBuilder, private authService : AuthService,private router: Router, private $http: HttpClient){}
+  constructor(private fb : FormBuilder, private authService : AuthService,
+    private router: Router, private $http: HttpClient){}
   userForm : FormGroup = this.fb.group({
     first_name: new FormControl('', [Validators.required]),
     last_name:new FormControl('', [Validators.required]),
@@ -54,7 +55,7 @@ export class SignUpComponent {
           error:(error)=>{
             console.error('Error Zaidi :',error.error)
             this.errorMessage=error.error.message;
-            
+
           }
         }
       );

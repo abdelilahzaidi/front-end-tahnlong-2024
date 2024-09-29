@@ -1,0 +1,40 @@
+<div class="modal" [ngClass]="{'modal-open': isOpen}">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Nouveau message</h3>
+    <p class="py-4">Tous les champs sont obligatoires !!!</p>
+
+    <form [formGroup]="formMessage" (ngSubmit)="sendNewMessage()">
+      <div class="form-group">
+        <label for="receiver" class="form-control w-full my-3">
+          <span class="label-text">Destinataire</span>
+          <select formControlName="receivers" id="receiver" class="form-select">
+            <option *ngFor="let member of members" [ngValue]="member.id">{{ member.first_name }} {{ member.last_name }}</option>
+          </select>
+
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="title" class="form-control w-full my-5">
+          <span class="label-text">Titre du message</span>
+          <input formControlName="titre" type="text" id="titre" class="input input-bordered w-full" placeholder="Titre">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="thumbnail" class="form-control w-full my-5">
+          <span class="label-text">Contenu du message</span>
+          <input formControlName="contenu" type="url" id="contenu" class="input input-bordered w-full" placeholder="Contenu du message">
+        </label>
+      </div>
+      <!-- <div class="form-group">
+        <label for="description" class="form-control w-full my-3">
+          <span class="label-text">Description</span>
+          <textarea formControlName="description" id="description" class="textarea textarea-bordered w-full" placeholder="Description" rows="4"></textarea>
+        </label>
+      </div> -->
+      <div class="modal-action">
+        <button type="submit" class="btn btn-secondary hover:bg-fuchsia-600">Envoyer</button>
+        <button type="button" class="btn" (click)="closeModal()">Fermer</button>
+      </div>
+    </form>
+  </div>
+</div>

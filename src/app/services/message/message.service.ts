@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { SentMessages } from 'src/app/interfaces/message/message.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class MessageService {
       .pipe(
         catchError(error => {
           console.error('Erreur lors de la récupération des messages:', error);
-          throw error; // Propage l'erreur pour que le composant puisse la gérer
+          throw error;
         })
       );
   }
@@ -26,7 +27,7 @@ export class MessageService {
       .pipe(
         catchError(error => {
           console.error('Erreur lors de la récupération des messages:', error);
-          throw error; // Propage l'erreur pour que le composant puisse la gérer
+          throw error;
         })
       );
   }
@@ -37,7 +38,7 @@ export class MessageService {
         .get<{ user: any; message: any[] }>(`${this.apiUrl}/message/${messageId}/user`)
         .toPromise();
 
-      console.log('Réponse du service:', response); // Vérifiez la réponse du service
+      console.log('Réponse du service:', response);
 
       return response || { user: null, message: [] };
     } catch (error) {
@@ -45,5 +46,12 @@ export class MessageService {
       throw error;
     }
   }
+
+  sendMessage(messageData: { titre: string, contenu: string, receiverIds: number[], senderId: number }): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.apiUrl+'/message', messageData, { headers });
+  }
+
+
 
 }

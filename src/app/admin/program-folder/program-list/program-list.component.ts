@@ -10,8 +10,9 @@ import { ProgramService } from 'src/app/services/program/program.service';
   styleUrls: ['./program-list.component.css']
 })
 export class ProgramListComponent {
-
+  isCollapsed : boolean= true;
   errorMessage: any;
+  selectedProgram : any;
   constructor(
     private httpClient: HttpClient,
     private fb: FormBuilder,
@@ -30,10 +31,14 @@ export class ProgramListComponent {
     this.httpClient
       .get<any[]>(this.apiUrl + '/program')
       .subscribe((data) => {
-        this.program = data;
+        this.programs = data.sort((a, b) => a.id - b.id);
+
+        if (this.programs.length > 0) {
+          this.selectedProgram = this.programs[0];
+        }
       });
-    this.getPrograms();
   }
+
 
   getPrograms() {
     console.log('Programs');

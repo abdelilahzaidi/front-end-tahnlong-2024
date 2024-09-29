@@ -1,4 +1,4 @@
-<div class="row m-5">
+<!-- <div class="row m-5">
   <div style="display: flex; margin-top: 80px;" class="mb-5">
     <p class="mt-3">Créer un nouveau horaire</p>
 
@@ -70,4 +70,50 @@
       </div>
     </div>
   </div>
+</div> -->
+<div class="container" style="width : 50%;">
+  <div style="display: flex; margin-top: 80px;" class="mb-5">
+    <p class="mt-3">Créer un nouveau horaire</p>
+    <button class="btn btn-success m-2" (click)="createHoraire()">
+      <i class="bi bi-person-plus-fill"></i>
+    </button>
+  </div>
+  <table class="table table-dark table-bordered table-striped text-white text-center" style="margin-top:20px; margin-bottom:100px;">
+    <thead>
+      <tr>
+        <th>Jour de cours</th>
+        <th>Date de cours</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let horaire of horaires">
+        <td>
+          {{ horaire.jour }}
+        </td>
+        <td>
+          {{ (horaire?.heureDebut?.split(':').slice(0,2).join(':')) || 'N/A' }} - {{ (horaire?.heureFin?.split(':').slice(0,2).join(':')) || 'N/A' }}
+        </td>
+        <td class="m-5 center">
+          <button
+            class="btn btn-success m-3 center"
+            (click)="editHoraireById($event,horaire)"
+          >
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+
+          <button
+            class="btn btn-danger m-3 center"
+            (click)="handleDeletehoraire($event,horaire)"
+
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+
+

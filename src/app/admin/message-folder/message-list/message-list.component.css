@@ -1,25 +1,43 @@
 
 .message{
  display: flex;
+ flex-direction: column;
  justify-content: center;
  align-items: center;
+  width :100%;
 
 }
 
+.card-body-1{
+  position : fixed;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-right:5px;
+}
+
+::-webkit-scrollbar{
+  width : 5px;
+}
+
+::-webkit-scrollbar-thumb{
+  width : 5px;
+}
+
+
 .card{
-  height: 600px;
+  height: 602px;
   border-radius: 15px;
   border: 2px solid;
   color: rgb(143, 161, 200);
 }
 
 .user-list{
-  height:600px;
+  height:602px;
 
 }
 
 .message-list{
-  height:600px;
+  height:602px;
 }
 
 button{
@@ -100,3 +118,8 @@ button{
 }
 
 
+
+.search .create{
+  display: flex;
+  flex-direction: column;
+}

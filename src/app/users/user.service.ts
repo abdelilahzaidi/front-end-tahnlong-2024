@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,4 +29,19 @@ export class UserService {
       })
     );
   }
+
+  getUserByIdForMessage(userId: number) {
+    return this.httpClient
+    .get<any[]>(`${this.apiURL}/user/${userId}`)
+    .toPromise();
+  }
+
+
+
+
+  // getMessagesByUser(userId: number): Observable<any> {
+  //   return this.httpClient
+  //     .get<any[]>(`${this.apiURL}/user/${userId}`).toPromise()
+
+  // }
 }

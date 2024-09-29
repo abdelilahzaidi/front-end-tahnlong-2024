@@ -1,0 +1,64 @@
+.main{
+  display: flex;
+  background-color: blue;
+  height :50%;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.personnel {
+  display: flex;
+  align-items: center;
+  width:60%;
+  background-color: brown;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.personnel_bis{
+  width:40%;
+  background-color: rgb(42, 165, 104);
+  margin: 20px;
+
+}
+
+.personnel_avatar{
+  display: flex;
+  align-items: center;
+  color:red;
+  height: 200px;
+  width:200px;
+  border-radius: 50%;
+  background-color: blueviolet;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.personnel_avatar h1{
+ color:red;
+ margin-left: 40%;
+ margin-right: 30%;
+}
+.personnel_avatar> h1{
+  display: flex;
+  align-items: center;
+}
+
+.card-text{
+  display: flex;
+  flex-direction: column;
+}
+.card-title{
+  width:60%;
+  margin: 20px;
+}
+
+
+.personnel_info{
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.card-text> div{
+  text-align: justify;
+  padding-left: 25px;
+  padding-right: 25px;
+}

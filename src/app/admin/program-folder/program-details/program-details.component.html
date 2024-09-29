@@ -1,15 +1,46 @@
-
-<div class="p-3 high-barre">
+<div class="p-3 high-barre" style="width: 100%; display: flex; align-items: end;  justify-content: center; align-items: center;">
   <div
     *ngIf="program"
-    style="width: 90%; margin-right: 10px; margin-left: 45px; margin-top: 20px"
+    style="width: 70%; margin-right: 10px; margin-left: 45px; margin-top: 20px"
   >
 
-    <ul class="navbar-nav" style="margin-left: 40px">
-      <li class="nav-item">
-        <a class="nav-link">Contenu du programme {{ program.title }} </a>
-      </li>
-    </ul>
+
+
+
+
+
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="nav-link">Contenu du programme {{ program.title }} </h1>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Positions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Lap tan</td>
+                  <td>image</td>
+
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Lap tan</td>
+                  <td>image</td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-body">
         <div class="row">
@@ -38,12 +69,5 @@
 <div
   style="width: 90%; margin-right: 10px; margin-left: 45px; margin-top: 20px"
 >
-  <span style="display: flex; margin: 10px 10 px 10px 10px">
-    <div>
-      <button class="btn btn-success" style="display: flex">
-        <p style="margin-right: 10px">Activer ou desactiver le programme</p>
-        <i class="bi bi-pencil-fill"></i>
-      </button>
-    </div>
-  </span>
+
 </div>

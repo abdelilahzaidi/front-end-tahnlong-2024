@@ -11,7 +11,7 @@ import { SessionService } from 'src/app/services/session.service';
 export class HighBarreResponsableComponent {
   currentAction : any
   actions =[
-    {route:"user-list",title:"Utilisateur","icon":"person"},
+    {route:"users",title:"Utilisateur","icon":"person"},
     {route:"program-list",title:"Programme","icon":"person"},
     {route:"niveau-list",title:"Niveau","icon":"person"},
     {route:"horaire-list",title:"Horaire","icon":"person"},

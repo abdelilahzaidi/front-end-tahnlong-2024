@@ -19,38 +19,40 @@
       <tr>
         <th>Prénom</th>
         <th>Nom</th>
+        <th>Email</th>
         <th>Date d'attribution</th>
         <th>Date de naissance</th>
         <th>Grade</th>
         <th>Durée</th>
         <th>Actif</th>
-        <th>Modifier ou supprimer les données</th>
+        <th>Modifier les données</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
         <td (click)="getUserById(user)">{{ user.first_name }}</td>
         <td (click)="getUserById(user)">{{ user.last_name }}</td>
+        <td>{{ user.email}}</td>
         <td>{{ user.attributionDate | date : "yyyy-MM-dd" }}</td>
         <td>{{ user.birthDate | date : "yyyy-MM-dd" }}</td>
         <td>{{ user.level?.grade }}</td>
         <td>{{ user.level?.during }}</td>
-        <td>{{ user.actif }}</td>
+        <td>{{ user.actif ? 'activé(e)' : 'desactivé(e)' }}</td>
         <td class="">
           <button
-            class="btn btn-success ms-5"
+            class="btn btn-success ms-5" style="display: flex; align-items: center;justify-content: center;"
             (click)="handleEditUser($event, user)"
           >
             <i class="bi bi-pencil-fill"></i>
           </button>
 
-          <button
+          <!-- <button
             class="btn btn-danger mx-5"
             (click)="handleDeleteUser($event, user)"
             [disabled]="user.status === 'admin'"
           >
             <i class="bi bi-trash"></i>
-          </button>
+          </button> -->
         </td>
       </tr>
     </tbody>

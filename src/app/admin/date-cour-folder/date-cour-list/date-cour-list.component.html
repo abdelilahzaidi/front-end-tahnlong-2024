@@ -1,42 +1,24 @@
-<div class="container">
-  <div class="d-flex justify-content-center align-items-center" class="create-user"
-style="margin-left: 45px">
-
-  <div style="display: flex; margin-top: 80px;">
-    <p class="me-5">Créer une nouvelle de date de cour</p>
-
-    <button class="btn btn-success" >
-      <i class="bi bi-person-plus-fill"></i>
-    </button>
-  </div>
-</div>
+<div class="container" style="width : 30%;">
+     <!-- Sélecteur d'année -->
+     <div>
+      <label for="year" class="form-label">Année</label>
+      <select class="form-control" id="year" (change)="onYearChange($event)">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+    </div>
   <table class="table table-dark table-bordered table-striped text-white" style="margin-top:20px; margin-bottom:100px;" >
     <thead>
       <tr>
         <th>Date de cours</th>
-
-        <th>Modifier les données</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let dc of dateCours" (click)="getdateCours()">
         <td>{{ dc.dateCour | date:'yyyy-MM-dd'}}</td>
-
-        <td>
-          <button class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-          data-bs-original-title="Popover Title"
-          aria-describedby="popover344544"
-          data-bs-placement="bottom"
-           style="display:flex;">
-            <p style="margin-right: 10px;">Modifier</p>
-            <i class="bi bi-pencil-fill"></i>
-          </button>
-        </td>
       </tr>
     </tbody>
   </table>
 
   <div class="text-center my-4">
-    <!-- Ajoutez ici les boutons de pagination si nécessaire -->
   </div>
 </div>

@@ -13,33 +13,111 @@
         <ul class="navbar-nav" style="margin-left: 40px">
           <li class="nav-item">
             <a class="nav-link" style="color: white"
-              >Bonjour {{ user.first_name }} {{ user.last_name }}
+              >Bienvnue {{ user.first_name }} {{ user.last_name }}
             </a>
           </li>
         </ul>
-        <ul
-        class="navbar-nav"
-        style=" display: flex; flex-direction: row"
-      >
-        <li>
-          <a class="nav-link" style="color: white" [routerLink]="['/admin', 'user-details', currentId$ |async]"> profil </a>
-        </li>
-      </ul>
-      <ul  class="navbar-nav"
-      style="display: flex; flex-direction: row">
-        
-        <li>
-          <a class="nav-link" style="color: white" [routerLink]="['/user', currentId$ |async,  'program']"> program </a>
-        </li>
-      </ul>
-        <ul
-          class="navbar-nav"
-          style="display: flex; flex-direction: row"
-        >
-          <li>
-            <a class="nav-link" style="color: white"> message </a>
+
+        <ul class="navbar-li-dropdown" style="margin-left: 40px">
+          <li class="link-item">
+            <a
+              class="nav-link"
+              style="color: white"
+              [routerLink]="['/admin', 'user-details', currentId$ | async]"
+            >
+              profil
+            </a>
           </li>
+          <li class="link-item">
+            <a
+              class="nav-link"
+              style="color: white"
+              [routerLink]="['/admin', 'message-list', currentId$ | async]"
+            >
+              message
+            </a>
+          </li>
+
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Activités
+            </a>
+            <ul class="dropdown-menu" style="color: white">
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/admin',
+                    'program-details',
+                    (currentProgramId$ | async) ?? 'default'
+                  ]"
+                >
+                  program
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/admin',
+                    'seance-detail',
+                    (currentId$ | async) ?? 'default'
+                  ]"
+                >
+                  seance
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/admin',
+                    'events',
+                    (currentId$ | async) ?? 'default'
+                  ]"
+                >
+                  événement
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Settings
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let action of actions">
+                <button
+                
+                  [routerLink]="[action.route]"
+                  [ngClass]="action === currentAction ? 'btn btn-primary' : 'btn btn-outline-primary'"
+                  class="dropdown-item m-1"
+                  style="width: 200px;"
+                >
+                  {{ action.title }}
+                  <i class="bi bi-{{action.icon}}"></i>
+                </button>
+              </li>
+            </ul>
+          </li>
+
         </ul>
+
         <ul
           class="navbar-nav"
           style="margin-right: 10px; display: flex; flex-direction: row"
@@ -50,7 +128,11 @@
         </ul>
       </div>
     </div>
-    <app-high-barre baseUri="/admin"></app-high-barre>
+    <!-- <app-side-bar
+      baseUri="/admin"
+      style="display: flex; width: 250px"
+    ></app-side-bar> -->
   </div>
 </div>
+
 <router-outlet></router-outlet>

@@ -34,13 +34,12 @@ export class HoraireNewComponent implements OnInit {
         (res) => {
           console.log('Réponse du serveur :', res);
           this.response$ = res; // Si vous avez besoin de stocker la réponse
-          alert("Programme ajouté");
-          this.router.navigate(['/admin/program-list']);
+          alert("Horaire ajouté");
+          this.router.navigate(['/admin/horaire-list']);
         },
         (error) => {
           this.errorMessage=error;
           console.error('Une erreur s\'est produite lors de la requête :', error);
-          // Traitez l'erreur comme vous le souhaitez ici
         }
       );
   }

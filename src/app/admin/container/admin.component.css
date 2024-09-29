@@ -1,0 +1,24 @@
+/* .dropdown-menu li{
+  list-style-type: none;
+} */
+
+.navbar-li-dropdown{
+  display: flex;
+  color:white;
+  list-style-type: none;
+}
+
+.link-item .dropdown{
+  display: flex;
+  align-items: center;
+
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px;
+}
+
+.link-item .dropdown , a{
+
+  padding: 10px;
+
+}

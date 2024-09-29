@@ -25,7 +25,7 @@ export class HighBarreComponent {
     {route:"seance-list",title:"Seance","icon":"person"},
     {route:"facture-list",title:"Facture","icon":"person"},
     {route:"abonnement-list",title:"Abonnement","icon":"person"},
-    {route:"message-list",title:"message","icon":"chat-dots"},
+    {route:"event-list",title:"Événement","icon":"person"},
   ]
   title = 'than-long-client';
   user$: Observable<any>

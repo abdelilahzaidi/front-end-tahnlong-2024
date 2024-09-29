@@ -1,0 +1,51 @@
+<div class="row m-5">
+  <div class="row">
+    <div class="col-md-3 col-lg-3" *ngFor="let seance of seances">
+      <div class="card">
+        <div class="card-header bg-primary" style="color:white;">
+          <h4 class="card-title ">
+            Seance du
+            <span *ngIf="seance.horaire">{{ seance.horaire.jour }}</span>
+            <span *ngIf="!seance.horaire">Horaire non disponible</span>
+          </h4>
+        </div>
+
+        <div class="card-body">
+          <div class="card-title">
+            <span class="badge bg-primary">Thème de la seance</span>
+            <span style="display: flex; justify-content: center; align-items: center;">
+              {{ seance.cour.objectifDuCour }}
+            </span>
+          </div>
+          <div class="card-title" *ngIf="seance.horaire">
+            <div class="badge bg-primary">L'horaire</div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              {{ seance.horaire.heureDebut.split(':').slice(0,2).join(':') }} - {{ seance.horaire.heureFin.split(':').slice(0,2).join(':') }}
+            </div>
+          </div>
+          <div class="card-title">
+            <div class="badge bg-primary">Jour</div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              {{ seance.horaire?.jour || 'Jour non disponible' }}
+            </div>
+          </div>
+          <!-- <div class="card-title">
+            <div class="badge bg-primary">Date</div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              {{ seance.dateCour ? (seance.dateCour | date:'yyyy-MM-dd') : 'Date non disponible' }}
+            </div>
+          </div> -->
+          <div class="card-title">
+            <div class="badge bg-primary">Date</div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              {{ seance.dateCour ? (seance.dateCour | date:'yyyy-MM-dd') : 'Date non disponible' }}
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

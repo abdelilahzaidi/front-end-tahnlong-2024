@@ -45,14 +45,14 @@ export class UserNewComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log('Réponse du serveur :', res);
-          this.response$ = res; // Si vous avez besoin de stocker la réponse
+          this.response$ = res;
           alert("Utilisateur ajouté");
           this.router.navigate(['/admin/user-list']);
         },
         (error) => {
           this.errorMessage=error;
           console.error('Une erreur s\'est produite lors de la requête :', error);
-          // Traitez l'erreur comme vous le souhaitez ici
+          
         }
       );
   }

@@ -1,0 +1,27 @@
+<div class="container m-5">
+
+  <table class="table table-dark table-bordered table-striped text-white text-center">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Liste des participants</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.nom }}</td>
+        <td>{{ event.dateDebut | date : "yyyy-MM-dd" }}</td>
+        <td>{{ event.dateFin | date : "yyyy-MM-dd" }}</td>
+        <td>
+          <select>
+            <option value="">Lister les participants</option>
+            <option *ngFor="let user of event.users" [value]="user.id">{{ user.first_name }} {{ user.last_name }}</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

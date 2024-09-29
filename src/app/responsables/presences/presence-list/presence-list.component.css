@@ -1,0 +1,44 @@
+.presence{
+  display: flex;
+  background-color:rgb(228, 218, 218);
+  width:80%;
+  margin:50px;
+
+}
+
+
+.presence-seance-list{
+
+  background-color:rgb(215, 215, 226);
+  width:50%;
+
+}
+
+
+.presence-users-list{
+
+  background-color:rgb(232, 238, 232);
+  width:50%;
+
+}
+
+
+
+.user-list {
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}

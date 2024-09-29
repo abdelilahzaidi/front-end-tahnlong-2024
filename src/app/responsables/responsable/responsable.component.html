@@ -1,0 +1,173 @@
+<div class="p-3 high-barre">
+  <div style="flex-grow: 3" *ngIf="user$ | async as user">
+    <div class="navbar navbar-light">
+      <div
+        class="container-fluid border bg-primary"
+        style="
+          width: 90%;
+          border-radius: 5px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <ul class="navbar-nav" style="margin-left: 40px">
+          <li class="nav-item">
+            <a class="nav-link" style="color: white"
+              >Bienvnue {{ user.first_name }} {{ user.last_name }}
+            </a>
+          </li>
+        </ul>
+
+        <ul class="navbar-li-dropdown" style="margin-left: 40px">
+          <li class="link-item">
+            <a
+              class="nav-link"
+              style="color: white"
+              [routerLink]="['/responsables', 'responsbale-detail', currentId$ | async]"
+            >
+              profil
+            </a>
+          </li>
+          <li class="link-item">
+            <a
+              class="nav-link"
+              style="color: white"
+              [routerLink]="['/responsables', 'message-list', currentId$ | async]"
+            >
+              message
+            </a>
+          </li>
+
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Activités
+            </a>
+            <ul class="dropdown-menu" style="color: white">
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/responsables',
+                    'program-detail',
+                    (currentProgramId$ | async) ?? 'default'
+                  ]"
+                >
+                  program
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/responsables',
+                    'seance-detail',
+                    (currentId$ | async) ?? 'default'
+                  ]"
+                >
+                  seance
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/responsables',
+                    'events',
+                    (currentId$ | async) ?? 'default'
+
+                  ]"
+                >
+                  événement
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/responsables',
+                    'seances',
+
+                  ]"
+                >
+                  séance
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              settings
+            </a>
+            <ul class="dropdown-menu" style="color: white">
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/responsables',
+                    'program-list',
+                    (currentProgramId$ | async) ?? 'default'
+                  ]"
+                >
+                  program
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/responsables',
+                    'presences',
+                    (currentId$ | async) ?? 'default'
+
+                  ]"
+                >
+                  présences
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </ul>
+
+        <ul
+          class="navbar-nav"
+          style="margin-right: 10px; display: flex; flex-direction: row"
+        >
+          <li>
+            <a class="nav-link" style="color: white"> {{ user.status }} </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <app-side-bar
+      baseUri="/responsables"
+      style="display: flex; width: 250px"
+    ></app-side-bar> -->
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+
+
+
+
+

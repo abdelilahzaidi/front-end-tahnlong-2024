@@ -1,0 +1,47 @@
+<div class="form-group m-5" style="width: 50%; display: flex; align-items: center; justify-content: center;">
+  <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+    <!-- Sélecteur de type d'abonnement -->
+    <div class="form-group">
+      <label for="abonnementType" class="form-label">Type d'Abonnement</label>
+      <select
+        id="abonnementType"
+        class="form-select"
+        formControlName="abonnementType"
+        (change)="onAbonnementTypeChange($event)"
+        required
+      >
+        <option value="">Sélectionnez un type d'abonnement</option>
+        <option *ngFor="let type of abonnementTypes" [value]="type.id">
+          {{ type.type }}
+        </option>
+      </select>
+      <div *ngIf="userForm.get('abonnementType')?.errors?.['required']" class="text-danger">
+        Le champ est requis.
+      </div>
+    </div>
+
+    <!-- Affichage du tarif -->
+    <div class="form-group" *ngIf="selectedTarif !== null">
+      <label for="tarif" class="form-label">Tarif</label>
+      <p>{{ selectedTarif | currency }}</p>
+    </div>
+
+    <!-- Sélecteur d'utilisateur -->
+    <div class="form-group">
+      <label for="user" class="form-label">Membre</label>
+      <select id="user" class="form-select" formControlName="user" required>
+        <option value="">Sélectionnez un utilisateur</option>
+        <option *ngFor="let user of users$ | async" [value]="user.id">
+          {{ user.last_name }} {{ user.first_name }}
+        </option>
+      </select>
+      <div *ngIf="userForm.get('user')?.errors?.['required']" class="text-danger">
+        Le champ est requis.
+      </div>
+    </div>
+
+    <!-- Autres éléments de formulaire ici -->
+
+    <button type="submit" class="btn btn-primary">Assigner</button>
+  </form>
+</div>

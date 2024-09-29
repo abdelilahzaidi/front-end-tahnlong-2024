@@ -1,3 +1,4 @@
+import { UsersComponent } from './responsables/users/users.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +14,6 @@ import { HomeComponent } from './page-no-conected/home/home.component';
 import { PageNoConectedModule } from './page-no-conected/page-no-conected.module';
 import { VovinamComponent } from './page-no-conected/vovinam/vovinam.component';
 import { MemberComponent } from './member/member.component';
-import { ResponsableComponent } from './responsable/responsable.component';
 import { NiveauComponent } from './admin/niveau-folder/niveau/niveau.component';
 import { UserEditStatusComponent } from './admin/user-folder/user-edit-status/user-edit-status.component';
 import { NiveauListComponent } from './admin/niveau-folder/niveau-list/niveau-list.component';
@@ -38,9 +38,15 @@ import { AbonnementDetailsComponent } from './admin/abonnement-folder/abonnement
 import { AbonnementEditComponent } from './admin/abonnement-folder/abonnement-edit/abonnement-edit.component';
 import { AbonnementListComponent } from './admin/abonnement-folder/abonnement-list/abonnement-list.component';
 import { HighBarreComponent } from "./shared/high-barre/high-barre.component";
-import { HighBarreResponsableComponent } from './shared/high-barre-responsable/high-barre-responsable.component';
+
 import { HighBarreMemberComponent } from './shared/high-barre-member/high-barre-member.component';
 import { TeamComponent } from './team/team.component';
+import { MessageCreateComponent } from './admin/message-folder/message-create/message-create.component';
+import { ResponsableComponent } from './responsables/responsable/responsable.component';
+import { HighBarreResponsablesComponent } from './shared/high-barre-responsables/high-barre-responsables.component';
+import { EventListComponent } from './responsable/events/event-list/event-list.component';
+
+
 
 
 
@@ -54,7 +60,7 @@ import { TeamComponent } from './team/team.component';
         VovinamComponent,
         TeamComponent,
         MemberComponent,
-        ResponsableComponent,
+        
         NiveauComponent,
         UserEditStatusComponent,
         NiveauListComponent,
@@ -63,6 +69,7 @@ import { TeamComponent } from './team/team.component';
         SeanceListComponent,
         FactureListComponent,
         MessageListComponent,
+        MessageCreateComponent,
         CourListComponent,
         DateCourListComponent,
         ProgramDetailsComponent,
@@ -74,12 +81,19 @@ import { TeamComponent } from './team/team.component';
         LieuNewComponent,
         LieuEditComponent,
         CourNewComponent,
+        //EventListComponent,
         SeanceNewComponent,
         AbonnementListComponent,
         AbonnementEditComponent,
         AbonnementDetailsComponent,
         HighBarreMemberComponent,
-        HighBarreResponsableComponent,
+        HighBarreResponsablesComponent,
+        EventListComponent,
+
+
+
+
+
 
     ],
     providers: [
@@ -101,6 +115,9 @@ import { TeamComponent } from './team/team.component';
         HttpClientModule,
         ReactiveFormsModule,
         HighBarreComponent,
+
+
+
 
     ]
 })

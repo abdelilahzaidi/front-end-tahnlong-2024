@@ -1,0 +1,90 @@
+<div class="p-3 high-barre">
+  <div
+    *ngIf="user"
+    style="width: 90%; margin-right: 10px; margin-left: 45px; margin-top: 20px"
+  >
+    <ul class="navbar-nav" style="margin-left: 40px">
+      <li class="nav-item">
+        <a class="nav-link"
+          >Données du pratiquant {{ user.first_name }}
+          {{ user.last_name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    style="width: 90%; margin-right: 10px; margin-left: 45px; margin-top: 20px"
+  ></div>
+</div>
+
+<div class="main" style="width:80%; margin-top: 50px; margin-left:250px; justify-content: center; align-items: center;">
+  <div class="personnel">
+    <div class="personnel_avatar">
+      <h1>AZ</h1>
+    </div>
+    <div class="personnel_info" style="width:70%;">
+      <div class="card border-dark mb-3" >
+        <div class="card-body text-dark">
+          <h5 class="card-title data_personnal">Données personnelles</h5>
+          <div class="card-text">
+            <div>
+              <span>Nom</span>:<span>{{ user.first_name }}</span>
+            </div>
+            <div>
+              <span>Prenon</span>:<span>{{ user.last_name }}</span>
+            </div>
+
+            <div>
+              <span>Genre</span>:<span>{{user.gender }}</span>
+            </div>
+            <div>
+              <span>Prenon</span>:<span>{{ user.email }}</span>
+            </div>
+            <div>
+              <span>Prenon</span>:<span>{{ user.acif }}</span>
+            </div>
+            <div>
+              <span>Prenon</span>:<span>{{ user.status }}</span>
+            </div>
+            <div>
+              <span>Date de naissance</span>:<span>{{ user.birthDate | date : "yyyy-MM-dd" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="personnel_bis">
+    <div class="adress">
+      <div class="card border-dark mb-3" style="width:90%;">
+        <div class="card-body text-dark">
+          <h5 class="card-title">Adresse</h5>
+          <div class="card-text">
+            <div>
+              <span>Rue</span>:<span>{{ user.rue }}</span>
+            </div>
+            <div>
+              <span>Prenon</span>:<span>{{ user.commune }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="program">
+      <div class="card border-dark mb-3" style="width:90%;">
+        <div class="card-body text-dark">
+          <h5 class="card-title">programme</h5>
+          <div class="card-text">
+            <div>
+              <span>Program</span>:<span>{{ user.level?.grade }}</span>
+            </div>
+            <div>
+              <span>Durée</span>:<span>{{ user.level?.during }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
