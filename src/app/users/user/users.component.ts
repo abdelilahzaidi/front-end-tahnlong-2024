@@ -64,25 +64,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  // handleActionClick(action: any): void {
-  //   switch (action.title) {
-  //     case 'Programme':
-  //       this.getProgramDetails();
-  //       break;
-  //     case 'Message':
-  //       this.afficherMessages();
-  //       break;
-  //     case 'Niveau':
-  //       this.afficherNiveau();
-  //       break;
-  //     case 'Abonnement':
-  //       this.afficherAbonnement();
-  //       break;
-
-  //     default:
-  //       console.error('Action non gérée :', action.title);
-  //   }
-  // }
+ 
 
   afficherProgramme(): void {
     this.user$.subscribe((userData) => {

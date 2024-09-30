@@ -62,19 +62,7 @@
                   program
                 </a>
               </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  style="color: white"
-                  [routerLink]="[
-                    '/responsables',
-                    'seance-detail',
-                    (currentId$ | async) ?? 'default'
-                  ]"
-                >
-                  seance
-                </a>
-              </li>
+
               <li>
                 <a
                   class="dropdown-item"
@@ -115,19 +103,8 @@
               settings
             </a>
             <ul class="dropdown-menu" style="color: white">
-              <li>
-                <a
-                  class="dropdown-item"
-                  style="color: white"
-                  [routerLink]="[
-                    '/responsables',
-                    'program-list',
-                    (currentProgramId$ | async) ?? 'default'
-                  ]"
-                >
-                  program
-                </a>
-              </li>
+
+
               <li>
                 <a
                   class="dropdown-item"
@@ -157,10 +134,6 @@
         </ul>
       </div>
     </div>
-    <!-- <app-side-bar
-      baseUri="/responsables"
-      style="display: flex; width: 250px"
-    ></app-side-bar> -->
   </div>
 </div>
 

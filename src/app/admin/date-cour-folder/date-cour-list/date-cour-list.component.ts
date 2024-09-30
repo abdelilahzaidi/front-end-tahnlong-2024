@@ -34,13 +34,13 @@ export class DateCourListComponent {
     private router: Router
   ) {
     this.filterForm = this.fb.group({
-      selectedYear: [this.currentYear], // Par défaut, sélectionner l'année en cours
+      selectedYear: [this.currentYear],
     });
 
     this.httpClient.get<any[]>('http://localhost:3001/date-cour').subscribe({
       next: (data) => {
         this.dateCours = data;
-        this.filteredDateCours = this.dateCours; // Initialiser les dates de cours filtrées avec toutes les données
+        this.filteredDateCours = this.dateCours;
         this.setupYearsFilter();
       },
       error: (err) => {
@@ -50,16 +50,11 @@ export class DateCourListComponent {
   }
 
   ngOnInit(): void {
-    // this.httpClient
-    //   .get<any[]>(this.apiUrl + '/date-cour')
-    //   .subscribe((data) => {
-    //     this.dateCour = data;
-    //   });
-    // this.getdateCours();
+
     this.httpClient.get<any[]>('http://localhost:3001/date-cour').subscribe({
       next: (data) => {
         this.dateCours = data;
-        this.filteredDateCours = this.dateCours; // Initialiser les dates de cours filtrées avec toutes les données
+        this.filteredDateCours = this.dateCours;
         this.setupYearsFilter();
       },
       error: (err) => {
@@ -82,7 +77,7 @@ export class DateCourListComponent {
   }
 
   setupYearsFilter(): void {
-    // Extraire les années uniques à partir des dates de cours
+
     this.years = Array.from(
       new Set(this.dateCours.map((dc) => new Date(dc.dateCour).getFullYear()))
     );
@@ -96,8 +91,8 @@ export class DateCourListComponent {
   }
 
   resetFilter(): void {
-    this.filteredDateCours = this.dateCours; // Réinitialiser aux données complètes
-    this.filterForm.patchValue({ selectedYear: this.currentYear }); // Réinitialiser l'année sélectionnée au courant
+    this.filteredDateCours = this.dateCours;
+    this.filterForm.patchValue({ selectedYear: this.currentYear });
   }
 
   onYearChange(event: Event) {
@@ -111,19 +106,4 @@ export class DateCourListComponent {
       return dateObj.getFullYear() === this.selectedYear && dateObj.getMonth() === this.selectedMonth;
     });
   }
-
-  // getdateCourById(p: any) {
-  //   console.log("Un prog")
-  //   this.dateCourService.getdateCourById(p.id).subscribe({
-  //     next: (data) => {
-  //       this.dateCour = data
-  //       console.log("dateCour", data)
-  //       console.log("dateCour id", this.dateCour.id, " ", p.id)
-
-  //      },
-  //     error: (err) => {
-  //       this.errorMessage = err.error;
-  //     },
-  //   })
-  // }
 }

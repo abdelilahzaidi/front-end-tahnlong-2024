@@ -55,7 +55,7 @@
                   style="color: white"
                   [routerLink]="[
                     '/users',
-                    'program-details',
+                    'program',
                     currentProgramId$ | async
                   ]"
                 >
@@ -67,12 +67,12 @@
                   class="dropdown-item"
                   style="color: white"
                   [routerLink]="[
-                    '/admin',
-                    'program-details',
+                    '/users',
+                    'seance',
                     (currentProgramId$ | async) ?? 'default'
                   ]"
                 >
-                  program
+                 seance
                 </a>
               </li>
               <li>
@@ -80,51 +80,26 @@
                   class="dropdown-item"
                   style="color: white"
                   [routerLink]="[
-                    '/admin',
-                    'program-details',
+                    '/users',
+                    'event-list-user',
                     (currentProgramId$ | async) ?? 'default'
                   ]"
                 >
-                  program
+                  Evenements
                 </a>
               </li>
+
               <li>
                 <a
                   class="dropdown-item"
                   style="color: white"
                   [routerLink]="[
-                    '/admin',
-                    'program-details',
-                    (currentProgramId$ | async) ?? 'default'
+                    '/users',
+                    'facture',
+                    (currentId$ | async) ?? 'default'
                   ]"
                 >
-                  program
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  style="color: white"
-                  [routerLink]="[
-                    '/admin',
-                    'program-details',
-                    (currentProgramId$ | async) ?? 'default'
-                  ]"
-                >
-                  program
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  style="color: white"
-                  [routerLink]="[
-                    '/admin',
-                    'program-details',
-                    (currentProgramId$ | async) ?? 'default'
-                  ]"
-                >
-                  program
+                  Factures
                 </a>
               </li>
             </ul>

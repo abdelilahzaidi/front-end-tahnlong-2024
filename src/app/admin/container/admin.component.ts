@@ -30,7 +30,7 @@ export class AdminComponent {
     {route:"event-list",title:"Événement","icon":"person"},
   ]
   title = 'than-long-client';
-  
+
 
   @Input('baseUri')
   set Uri(v: string) {
@@ -51,7 +51,7 @@ export class AdminComponent {
     private $http: HttpClient
   ) {
     this.user$ = $session.User$;
-    this.program$ = $session.Program$ ?? of({ id: null }); // Fournir un observable par défaut
+    this.program$ = $session.Program$ ?? of({ id: null }); 
 
     this.currentId$ = this.user$.pipe(map(({ id }) => id));
     this.currentProgramId$ = this.program$.pipe(map(({ id }) => id));

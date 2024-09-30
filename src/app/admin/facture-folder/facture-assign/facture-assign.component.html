@@ -1,6 +1,6 @@
 <div class="form-group m-5" style="width: 50%; display: flex; align-items: center; justify-content: center;">
   <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
-    <!-- Sélecteur de type d'abonnement -->
+  
     <div class="form-group">
       <label for="abonnementType" class="form-label">Type d'Abonnement</label>
       <select
@@ -20,13 +20,13 @@
       </div>
     </div>
 
-    <!-- Affichage du tarif -->
+
     <div class="form-group" *ngIf="selectedTarif !== null">
       <label for="tarif" class="form-label">Tarif</label>
       <p>{{ selectedTarif | currency }}</p>
     </div>
 
-    <!-- Sélecteur d'utilisateur -->
+
     <div class="form-group">
       <label for="user" class="form-label">Membre</label>
       <select id="user" class="form-select" formControlName="user" required>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <!-- Autres éléments de formulaire ici -->
+
 
     <button type="submit" class="btn btn-primary">Assigner</button>
   </form>

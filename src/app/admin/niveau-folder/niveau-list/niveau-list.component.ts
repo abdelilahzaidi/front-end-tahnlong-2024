@@ -23,7 +23,7 @@ export class NiveauListComponent  {
   level: any;
   levels: any[] = [];
   selectedAbonnement: string = '';
-  selectedLevel = this.levels[0];  // Par défaut, sélectionnez le premier niveau
+  selectedLevel = this.levels[0];
   response$: any;
 
    currentAction!: string;
@@ -31,7 +31,7 @@ export class NiveauListComponent  {
     this.httpClient
       .get<any[]>(this.apiUrl + '/level')
       .subscribe((data) => {
-        this.levels = data.sort((a, b) => a.id - b.id); // Trier les niveaux par id croissant
+        this.levels = data.sort((a, b) => a.id - b.id);
         console.log('Données triées ',this.levels)
         if (this.levels.length > 0) {
           this.selectedLevel = this.levels[0];
@@ -91,23 +91,7 @@ export class NiveauListComponent  {
       });
     }
 
-  // getlevelById(p: any) {
-  //   //event.preventDefault();
-  //   console.log("Un prog")
-  //   this.niveauService.getLevelById(p.id).subscribe({
-  //     next: (data) => {
-  //       this.level = data
-  //       console.log("level", data)
-  //       console.log("level id", this.level.id, " ", p.id)
-  //        this.selectedLevel = data;
-  //        console.log("level", data);
-  //       console.log("level id", this.selectedLevel.id, " ", this.level.id);
-  //      },
-  //     error: (err) => {
-  //       this.errorMessage = err.error;
-  //     },
-  //   })
-  // }
+
 
   getlevelById(event: MouseEvent, level: any) {
     event.preventDefault(); // Empêche la redirection de la page

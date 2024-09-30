@@ -16,6 +16,7 @@ export class FactureComponent implements OnInit {
   apiUrl = "127.0.0.1:3001";
   userId: number | undefined;
   user$: Observable<any> | undefined;
+  currentId$ =36
 
   constructor(
     private httpClient: HttpClient,
@@ -34,7 +35,7 @@ export class FactureComponent implements OnInit {
       this.user$.subscribe(
         user => {
           this.user = user;
-          this.getInvoiceData(); // Fetch invoices once user is loaded
+          this.getInvoiceData(); 
         },
         error => {
           console.error('Error fetching user:', error);
@@ -42,12 +43,12 @@ export class FactureComponent implements OnInit {
       );
     } else {
       console.error('No user ID found in the route.');
-      this.router.navigate(['/users']); // Navigate to users list or another appropriate route
+      this.router.navigate(['/users']);
     }
   }
 
   getInvoiceData(): void {
-    if (this.userId) { // Check if userId is defined
+    if (this.userId) {
       this.invoiceService.getInvoicesByUserId(this.userId).subscribe(
         data => {
           this.invoices = data;

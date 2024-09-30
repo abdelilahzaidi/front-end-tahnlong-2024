@@ -44,9 +44,9 @@ export class FactureAssignComponent implements OnInit
     this.loadUsers();
     this.loadAbonnementTypes();
     this.route.params.subscribe(params => {
-      this.selectedInvoiceId = +params['id']; // Convertir en nombre
+      this.selectedInvoiceId = +params['id'];
       if (this.selectedInvoiceId) {
-        this.loadSelectedInvoice(this.selectedInvoiceId); // Charger les détails de la facture sélectionnée
+        this.loadSelectedInvoice(this.selectedInvoiceId);
       }
     });
     console.log("Invoice sélectionnée", this.selectedInvoice);
@@ -66,7 +66,7 @@ export class FactureAssignComponent implements OnInit
   }
 
   loadUsers(): void {
-    this.users$ = this.invoiceService.getUsers(); // Utilisez votre service pour récupérer les utilisateurs
+    this.users$ = this.invoiceService.getUsers(); 
     this.users$.subscribe({
       next: (data) => {
         console.log('Utilisateurs récupérés:', data);

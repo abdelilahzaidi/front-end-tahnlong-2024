@@ -17,7 +17,7 @@ import { SeanceListComponent } from './seances/seance-list/seance-list.component
 import { PresenceListComponent } from './presences/presence-list/presence-list.component';
 import { ProfilResponsableComponent } from './profil/profil-responsable/profil-responsable.component';
 import { PresenceValidateComponent } from './presences/presence-validate/presence-validate.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -40,7 +40,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ResponsablesRoutingModule,
-    HttpClientModule,  RouterModule
+    HttpClientModule,  RouterModule,
+    ReactiveFormsModule,
   ]
 
 })

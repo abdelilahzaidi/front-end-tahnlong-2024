@@ -44,24 +44,34 @@ export class ProgramComponent implements OnInit {
     console.log('programme',this.program$)
   }
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('ID:', id);
 
-    if (id) {
-      // Récupère les détails techniques du programme
-      this.httpClient.get<any[]>(`${this.apiUrl}/program/${id}/technical`)
-        .subscribe(
-          (data) => {
-            this.program = data;
-            console.log('Détails techniques du programme:', this.program.technicals);
-          },
-          (error) => {
-            this.errorMessage = 'Erreur lors de la récupération des détails du programme';
-            console.error(error);
+
+
+
+
+
+  ngOnInit(): void {
+    const programId = this.route.snapshot.paramMap.get('id');
+
+    this.httpClient
+      .get<any>(`${this.apiUrl}/program/${programId}/technichal`)
+      .subscribe(
+        (data) => {
+          this.program = data;  
+          console.log('Données du programme: ', this.program);
+
+
+          if (this.program && this.program.technicals && this.program.technicals.length > 0) {
+            console.log('Techniques trouvées: ', this.program.technicals);
+          } else {
+            console.warn('Aucune technique trouvée pour ce programme.');
           }
-        );
-    }
+        },
+        (error) => {
+          console.error('Erreur lors de la récupération des détails du programme: ', error);
+          this.errorMessage = 'Impossible de charger les détails du programme.';
+        }
+      );
   }
 }
 

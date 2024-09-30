@@ -20,9 +20,9 @@ export class LieuNewComponent implements OnInit {
     ville:new FormControl('', [Validators.required]),
   })
 
-  //grades$: Observable<any[]> = of([])
+
   ngOnInit(){
-    //this.grades$ = this.$http.get<any[]>('http://localhost:3001/')
+
   }
   async submit() {
     console.log('user / submit', this.lieuForm.value);
@@ -31,14 +31,14 @@ export class LieuNewComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log('Réponse du serveur :', res);
-          this.response$ = res; // Si vous avez besoin de stocker la réponse
+          this.response$ = res; 
           alert("Programme ajouté");
           this.router.navigate(['/admin/lieu-list']);
         },
         (error) => {
           this.errorMessage=error;
           console.error('Une erreur s\'est produite lors de la requête :', error);
-          // Traitez l'erreur comme vous le souhaitez ici
+
         }
       );
   }

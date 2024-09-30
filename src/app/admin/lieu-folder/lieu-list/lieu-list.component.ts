@@ -62,19 +62,5 @@ export class LieuListComponent  {
       this.router.navigate(['/admin/lieu-edit',l.id]);
     }
 
-  // getlieuById(p: any) {
-  //   console.log("Un prog")
-  //   this.lieuService.getlieuById(p.id).subscribe({
-  //     next: (data) => {
-  //       this.lieu = data
-  //       console.log("lieu", data)
-  //       console.log("lieu id", this.lieu.id, " ", p.id)
-
-  //      },
-  //     error: (err) => {
-  //       this.errorMessage = err.error;
-  //     },
-  //   })
-  // }
 
 }

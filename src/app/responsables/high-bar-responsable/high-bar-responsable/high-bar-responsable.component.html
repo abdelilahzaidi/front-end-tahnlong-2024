@@ -23,7 +23,7 @@
             <a
               class="nav-link"
               style="color: white"
-              [routerLink]="['/responsables', 'users', currentId$ | async]"
+              [routerLink]="['/responsables', 'responsbale-detail', currentId$ | async]"
             >
               profil
             </a>
@@ -51,24 +51,11 @@
             <ul class="dropdown-menu" style="color: white">
               <li>
                 <a
-                  class="nav-link"
-                  style="color: white"
-                  [routerLink]="[
-                    '/users',
-                    'program-details',
-                    currentProgramId$ | async
-                  ]"
-                >
-                  Programme
-                </a>
-              </li>
-              <li>
-                <a
                   class="dropdown-item"
                   style="color: white"
                   [routerLink]="[
-                    '/admin',
-                    'program-details',
+                    '/responsables',
+                    'program-detail',
                     (currentProgramId$ | async) ?? 'default'
                   ]"
                 >
@@ -80,53 +67,56 @@
                   class="dropdown-item"
                   style="color: white"
                   [routerLink]="[
-                    '/admin',
-                    'program-details',
+                    '/responsables',
+                    'events',
+                    (currentId$ | async) ?? 'default'
+
+                  ]"
+                >
+                  événement
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              settings
+            </a>
+            <ul class="dropdown-menu" style="color: white">
+              <!-- <li>
+                <a
+                  class="dropdown-item"
+                  style="color: white"
+                  [routerLink]="[
+                    '/responsables',
+                    'program-list',
                     (currentProgramId$ | async) ?? 'default'
                   ]"
                 >
                   program
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a
                   class="dropdown-item"
                   style="color: white"
                   [routerLink]="[
-                    '/admin',
-                    'program-details',
-                    (currentProgramId$ | async) ?? 'default'
+                    '/responsables',
+                    'presences',
+                    (currentId$ | async) ?? 'default'
+
                   ]"
                 >
-                  program
+                  présences
                 </a>
               </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  style="color: white"
-                  [routerLink]="[
-                    '/admin',
-                    'program-details',
-                    (currentProgramId$ | async) ?? 'default'
-                  ]"
-                >
-                  program
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  style="color: white"
-                  [routerLink]="[
-                    '/admin',
-                    'program-details',
-                    (currentProgramId$ | async) ?? 'default'
-                  ]"
-                >
-                  program
-                </a>
-              </li>
+
             </ul>
           </li>
         </ul>

@@ -24,7 +24,7 @@ export class HoraireUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const id = Number(params.get('id')); // Récupère l'ID de l'horaire depuis l'URL
+      const id = Number(params.get('id'));
       this.fetchHoraire(id);
     });
   }
@@ -33,12 +33,12 @@ export class HoraireUpdateComponent implements OnInit {
     this.horaireService.getHoraireById(id)
       .subscribe(
         (horaire: any) => {
-          this.horaire = horaire; // Stocke l'horaire récupéré
-          this.populateForm(); // Pré-remplit le formulaire avec les données de l'horaire
+          this.horaire = horaire;
+          this.populateForm();
         },
         (error) => {
           console.error('Erreur lors de la récupération de l\'horaire :', error);
-          // Gérez l'erreur, par exemple, redirigez vers une page d'erreur ou affichez un message à l'utilisateur
+
         }
       );
   }
@@ -64,7 +64,7 @@ export class HoraireUpdateComponent implements OnInit {
 
     console.log('Formulaire soumis :', this.horaireForm.value);
 
-    const idHoraireToUpdate = this.horaire.id; // Utilise l'ID de l'horaire récupéré
+    const idHoraireToUpdate = this.horaire.id;
 
     this.horaireService.updateHoraire(idHoraireToUpdate, this.horaireForm.value)
       .subscribe(
@@ -77,7 +77,7 @@ export class HoraireUpdateComponent implements OnInit {
         (error) => {
           this.errorMessage = error;
           console.error('Une erreur s\'est produite lors de la requête :', error);
-          // Affichez un message d'erreur à l'utilisateur de manière plus conviviale
+         
         }
       );
   }

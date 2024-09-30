@@ -55,23 +55,7 @@ export class HoraireListComponent {
     });
   }
 
-  // gethoraires() {
-  //   console.log('horaires');
-  //   this.httpClient
-  //     .get<any[]>('http://localhost:3001/horaire')
-  //     .subscribe({
-  //       next: (data) => {
-  //         this.horaires = data.map(it => ({
-  //           ...it,
-  //           jour: format(new Date(it.jour), 'yyyy-MM-dd'),
-  //           heureDebut: it.heureDebut.split(':').slice(0,2).join(':'),  heureFin: it.heureFin.split(':').slice(0,2).join(':')
-  //         }));
-  //       },
-  //       error: (err: any) => {
-  //         console.log(err);
-  //       },
-  //     });
-  //   }
+
 
   createHoraire() {
     this.router.navigate(['/admin/horaire-new']);
@@ -136,7 +120,7 @@ export class HoraireListComponent {
   onUpdateHoraire(id: number, updateData: Partial<any>): void {
     this.horaireService.updateHoraire(id, updateData).subscribe({
       next: (updatedHoraire) => {
-        // Update the local horaires array with the updated horaire
+
         const index = this.horaires.findIndex((h) => h.id === id);
         if (index !== -1) {
           this.horaires[index] = updatedHoraire;
@@ -152,7 +136,7 @@ export class HoraireListComponent {
   onDeleteHoraire(id: number): void {
     this.horaireService.deleteHoraire(id).subscribe({
       next: () => {
-        // Remove the deleted horaire from the local horaires array
+        
         this.horaires = this.horaires.filter((h) => h.id !== id);
         console.log('Horaire supprimé:', id);
       },

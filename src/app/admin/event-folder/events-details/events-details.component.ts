@@ -25,7 +25,6 @@ export class EventsDetailsComponent implements OnInit {
     private http: HttpClient
   ) {
     this.eventForm = this.fb.group({
-      // Define the form controls and validators
       nom: ['', Validators.required],
       date: ['', Validators.required],
       location: ['', Validators.required],
@@ -40,7 +39,7 @@ export class EventsDetailsComponent implements OnInit {
     this.eventService.getAllEvents().subscribe(
       (events: Event[]) => {
         this.events = events;
-        // Trier les événements par date de début
+
         this.events.sort((a, b) => {
           return (
             new Date(a.dateDebut).getTime() - new Date(b.dateDebut).getTime()
@@ -49,7 +48,7 @@ export class EventsDetailsComponent implements OnInit {
       },
       (error) => {
         console.error('Error loading events:', error);
-        // Gérer l'erreur comme nécessaire
+
       }
     );
   }
@@ -58,12 +57,12 @@ export class EventsDetailsComponent implements OnInit {
     this.eventService.deleteEvent(id).subscribe(
       () => {
         console.log(`Event with ID ${id} deleted successfully`);
-        // Actualiser la liste après suppression
+
         this.loadEvents();
       },
       (error) => {
         console.error(`Error deleting event with ID ${id}:`, error);
-        // Gérer l'erreur comme nécessaire
+
       }
     );
   }
@@ -79,7 +78,7 @@ export class EventsDetailsComponent implements OnInit {
         (data) => {
           this.participants = data;
           console.log('Participants:', this.participants);
-          // Vous pouvez manipuler les données des participants ici selon vos besoins
+         
         },
         (error) => {
           console.error('Error fetching participants:', error);

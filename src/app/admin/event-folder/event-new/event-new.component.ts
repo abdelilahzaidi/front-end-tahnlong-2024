@@ -29,39 +29,19 @@ export class EventCreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // createEvent(): void {
-  //   if (this.eventForm.invalid) {
-  //     this.errorMessage = 'Veuillez remplir tous les champs requis';
-  //     return;
-  //   }
 
-  //   const eventData = this.eventForm.value;
-  //   console.log('Event Data:', eventData);
-
-  //   this.eventService.createEvent(eventData).subscribe(
-  //     (res) => {
-  //       console.log('Réponse du serveur :', res);
-  //       alert('Événement créé avec succès');
-  //       this.router.navigate(['/admin/event-list']);
-  //     },
-  //     (error) => {
-  //       console.error('Une erreur s\'est produite lors de la requête :', error);
-  //       this.errorMessage = 'Erreur lors de la création de l\'événement';
-  //     }
-  //   );
-  // }
   createEvent(): void {
     if (this.eventForm.invalid) {
       this.errorMessage = 'Veuillez remplir tous les champs requis';
       return;
     }
 
-    const userIds = this.eventForm.value.userIds.split(',').map(Number); // Exemple de transformation si nécessaire
+    const userIds = this.eventForm.value.userIds.split(',').map(Number);
     const eventData = {
       nom: this.eventForm.value.nom,
       dateDebut: this.eventForm.value.dateDebut,
       dateFin: this.eventForm.value.dateFin,
-      userIds: []  // Assurez-vous que c'est bien un tableau de nombres
+      userIds: []   
     };
 
     this.eventService.createEvent(eventData).subscribe(

@@ -30,20 +30,20 @@ export class MessageCreateComponent implements OnInit {
     private httpClient: HttpClient,
     private fb: FormBuilder
   ) {
-    // Initialize the form group with form controls
+
     this.formMessage = this.fb.group({
-      titre: ['', Validators.required], // Field for the message title
-      contenu: ['', Validators.required], // Field for the message content
-      receivers: [[], Validators.required], // Field for selected receivers
-      senderId: [this.senderId] // Pre-fill senderId with the value of senderId variable
+      titre: ['', Validators.required],
+      contenu: ['', Validators.required],
+      receivers: [[], Validators.required],
+      senderId: [this.senderId]
     });
   }
 
   ngOnInit() {
-    this.getMembers(); // Fetch the list of members on initialization
+    this.getMembers();
   }
 
-  // Method to fetch the list of members (likely receivers)
+
   getMembers() {
     this.httpClient.get<any[]>(`${this.apiUrl}/user`).subscribe(
       (data) => {
@@ -55,42 +55,42 @@ export class MessageCreateComponent implements OnInit {
     );
   }
 
-  // Method called when the message is sent
+
   sendNewMessage(): void {
-    // Retrieve the selected receiver's ID
+
     const selectedReceiverId = this.formMessage.get('receivers')!.value;
 
-    // Build the form data to be sent
+
     const formData = {
       titre: this.formMessage.get('titre')!.value,
       contenu: this.formMessage.get('contenu')!.value,
-      receiverIds: [selectedReceiverId], // Put the receiver's ID in an array
+      receiverIds: [selectedReceiverId],
       senderId: this.senderId
     };
 
-    // Log the form data for debugging purposes
+
     console.log('FormData:', formData);
 
-    // Send the message using the messageService
+
     this.messageService.sendMessage(formData).subscribe(
       (response) => {
-        // Log success response
+
         console.log('Message sent successfully:', response);
-        // Update the response observable
+
         this.response$ = response;
-        // Alert the user of the success
+
         alert('Message sent successfully!');
 
-        // Extract the current ID from the URL
+
         const currentId = this.route.snapshot.paramMap.get('id');
 
-        // Navigate back to the URL with the extracted ID
+
         this.router.navigate([`/admin/message-list/${currentId}`]);
       },
       (error) => {
-        // Log the error response
+
         console.error('Error sending message:', error.message);
-        // Alert the user of the error
+        
         alert('Error sending message. Please try again.');
       }
     );
